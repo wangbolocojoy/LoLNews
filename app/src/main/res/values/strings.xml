@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">掌上资讯</string>
+    <string name="translate_up_down_behavior">com.shop.newshop_application.views.TranslateUpDownBehavior</string>
+    <string name="simple_view_behavior">com.shop.newshop_application.views.SimpleViewBehavior</string>
+</resources>

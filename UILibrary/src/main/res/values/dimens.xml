@@ -1,0 +1,27 @@
+<resources>
+    
+    <!-- base页面title -->
+	<dimen name="custom_title_height">75dip</dimen>
+	<dimen name="custom_title_icon_size">20dip</dimen>
+	<dimen name="custom_title_center_txt_size">20sp</dimen>
+	<dimen name="custom_title_txt_key_size">18sp</dimen>
+	
+	<!-- base页面tab -->
+	<dimen name="custom_tab_height">48dip</dimen>
+
+
+    <!-- 对话框 -->
+    <dimen name="custom_dialog_width">280dp</dimen>
+    <dimen name="custom_dialog_height">150dp</dimen>
+    <dimen name="custom_dialog_title_text_size">18sp</dimen>
+    <dimen name="custom_dialog_mes_text_size">16sp</dimen>
+    <dimen name="custom_dialog_edit_text_size">16sp</dimen>
+    <dimen name="custom_dialog_edit_text_bottom_line_width">210dp</dimen>
+    <dimen name="custom_dialog_key_height">46dp</dimen>
+    <dimen name="custom_dialog_key_text_size">18sp</dimen>
+
+    <!-- 加载对话框 -->
+    <dimen name="custom_loading_dialog_size">120dp</dimen>
+    
+
+</resources>

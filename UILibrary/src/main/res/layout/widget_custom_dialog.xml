@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="@dimen/custom_dialog_width"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/custom_dialog_height"
+        android:background="@drawable/shape_rect_custom_dialog_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/custom_dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="标题"
+            android:textColor="@color/black_85"
+            android:textSize="@dimen/custom_dialog_title_text_size" />
+
+        <LinearLayout
+            android:id="@+id/custom_dialog_msg_ll"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/custom_dialog_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="内容"
+                android:textColor="@color/black_85"
+                android:textSize="@dimen/custom_dialog_mes_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/custom_dialog_edit_ll"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <EditText
+                android:id="@+id/custom_dialog_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:background="@null"
+                android:freezesText="true"
+                android:gravity="center"
+                android:hint=""
+                android:textColor="@color/black_85"
+                android:textSize="@dimen/custom_dialog_edit_text_size" />
+
+            <View
+                android:id="@+id/custom_dialog_edit_bottom_line"
+                android:layout_width="@dimen/custom_dialog_edit_text_bottom_line_width"
+                android:layout_height="0.5dp"
+                android:background="@color/theme_color" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/custom_dialog_key_top_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/theme_color" />
+
+        <LinearLayout
+            android:id="@+id/custom_dialog_key_ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/custom_dialog_key_height"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/custom_dialog_key_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/color_nor_theme_pre_theme_light"
+                android:textSize="@dimen/custom_dialog_key_text_size" />
+
+            <View
+                android:id="@+id/custom_dialog_key_center_line"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/theme_color" />
+
+            <TextView
+                android:id="@+id/custom_dialog_key_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/color_nor_theme_pre_theme_light"
+                android:textSize="@dimen/custom_dialog_key_text_size" />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>
