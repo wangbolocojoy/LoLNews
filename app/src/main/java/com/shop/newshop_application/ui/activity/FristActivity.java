@@ -32,6 +32,7 @@ public class FristActivity extends BaseHttpActivity {
     protected boolean translucentStatusBar() {
         return true;
     }
+
     @Override
     protected boolean initData() {
         return true;
@@ -40,16 +41,16 @@ public class FristActivity extends BaseHttpActivity {
     @Override
     protected void initView() {
         setTitleVisible(false);
-    ButterKnife.bind(this);
-    setTitleBackKeyVisible(false);
         showNextPage(2000);
     }
-    /** 跳转到下一个页面 **/
+
+    /**
+     * 跳转到下一个页面
+     **/
     private void showNextPage(int delayTime) {
         postHandle.removeCallbacks(postRunnable);
         postHandle.postDelayed(postRunnable, delayTime);
     }
-
 
 
     /**

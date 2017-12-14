@@ -16,6 +16,8 @@ import com.shop.newshop_application.utils.UiUtils;
 
 import java.io.IOException;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -25,7 +27,7 @@ import okhttp3.Response;
  *
  */
 public abstract class BaseHttpActivity extends BaseSimpleTitleActivity {
-
+	protected Unbinder mBinder;
 	/** 加载对话框 **/
 	protected LoadingDialog mLoadingDialog;
 
@@ -41,12 +43,16 @@ public abstract class BaseHttpActivity extends BaseSimpleTitleActivity {
 			}
 		});
 		super.onCreate(savedInstanceState);
-
-
+		inButterKnifeView();
 	}
-	
+	public void inButterKnifeView(){
+		mBinder = ButterKnife.bind(this);
+	}
+
 	@Override
 	protected void onDestroy() {
+		// 取消绑定
+		mBinder.unbind();
 		super.onDestroy();
 		dismissLoadingDialog();
 		mLoadingDialog = null;

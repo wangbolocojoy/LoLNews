@@ -3,7 +3,6 @@ package com.shop.newshop_application.ui.activity.news;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Slide;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebResourceRequest;
@@ -19,13 +18,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ShowNewsActivity extends BaseHttpActivity {
-    private WebSettings webSettings;
-
-    public final static String URL = "url";
-    public final static String TITLE = "title";
-
     @BindView(R.id.news_webview)
     WebView webView;
+    private WebSettings webSettings;
+    public final static String URL = "url";
+    public final static String TITLE = "title";
 
     /**
      * set the parent view
@@ -41,6 +38,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
     protected boolean translucentStatusBar() {
         return true;
     }
+
     /**
      * init the data
      *
@@ -56,10 +54,10 @@ public class ShowNewsActivity extends BaseHttpActivity {
      */
     @Override
     protected void initView() {
-        ButterKnife.bind(this);
+        inButterKnifeView();
         setTitle(getIntent().getStringExtra(TITLE));
         webView.loadUrl(getIntent().getStringExtra(URL));
-        webSettings=webView.getSettings();
+        webSettings = webView.getSettings();
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
         webSettings.setJavaScriptEnabled(true);
         //设置自适应屏幕，两者合用
@@ -69,9 +67,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
         webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
         webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
         webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件
-
-
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -79,6 +75,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
             }
         });
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
@@ -87,10 +84,12 @@ public class ShowNewsActivity extends BaseHttpActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     public static void runActivity(Context context, String title, String url) {
         Intent intent = new Intent(context, ShowNewsActivity.class);
         intent.putExtra(URL, url);
         intent.putExtra(TITLE, title);
         context.startActivity(intent);
     }
+
 }

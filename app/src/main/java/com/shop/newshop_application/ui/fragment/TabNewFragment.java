@@ -43,7 +43,6 @@ public class TabNewFragment extends BaseHttpFragment {
     RecyclerView recyclerview;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
-    Unbinder unbinder;
     private FragmentNewsListAdapter fragmentNewsListAdapter;
     private List<TouTiaoListInfo.DataBean> newslist;
     private static int PAGESUM = 0;
@@ -124,17 +123,7 @@ public class TabNewFragment extends BaseHttpFragment {
         });
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+
+
 }

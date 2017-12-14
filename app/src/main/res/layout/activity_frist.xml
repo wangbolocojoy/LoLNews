@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/ic_back1"
     android:layout_height="match_parent"
     tools:context="com.shop.newshop_application.ui.activity.FristActivity">
-
-
-
+    <ImageView
+        android:src="@drawable/ic_bank"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

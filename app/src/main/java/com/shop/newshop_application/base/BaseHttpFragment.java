@@ -3,6 +3,10 @@ package com.shop.newshop_application.base;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.blankj.utilcode.util.NetworkUtils;
 import com.lzy.okgo.model.Response;
 import com.rhino.ui.base.BaseSimpleTitleFragment;
@@ -10,12 +14,16 @@ import com.rhino.ui.utils.AlertToast;
 import com.rhino.ui.widget.LoadingDialog;
 import com.rhino.ui.widget.SunLodingDialog;
 import com.shop.newshop_application.utils.UiUtils;
+import com.youth.banner.Banner;
+
 import java.io.File;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import okhttp3.Call;
 import okhttp3.Headers;
 
@@ -24,7 +32,7 @@ import okhttp3.Headers;
  * Create by LuoLin on 2016年12月6日
  */
 public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
-
+	Unbinder unbinder;
 	/** 加载对话框 **/
 	protected LoadingDialog mLoadingDialog;
 
@@ -46,6 +54,18 @@ public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
 		super.onDetach();
 		mLoadingDialog = null;
 
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View rootView = super.onCreateView(inflater, container, savedInstanceState);
+		unbinder = ButterKnife.bind(this, rootView);
+		return rootView;
+	}
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		unbinder.unbind();
 	}
 
 	/**
