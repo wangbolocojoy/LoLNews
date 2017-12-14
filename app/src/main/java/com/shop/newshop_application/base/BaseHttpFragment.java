@@ -27,21 +27,12 @@ public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
 
 	/** 加载对话框 **/
 	protected LoadingDialog mLoadingDialog;
-	protected SunLodingDialog sunLodingDialog;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		sunLodingDialog=new SunLodingDialog(getActivity());
-
 		mLoadingDialog = new LoadingDialog(getActivity());
 		mLoadingDialog.setCanceledOnTouchOutside(false);
-		sunLodingDialog.setCanceledOnTouchOutside(false);
 		mLoadingDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-			@Override
-			public void onCancel(DialogInterface dialogInterface) {
-				onLoadingDialogCancel(dialogInterface);
-			}
-		});
-		sunLodingDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 			@Override
 			public void onCancel(DialogInterface dialogInterface) {
 				onLoadingDialogCancel(dialogInterface);
@@ -49,12 +40,12 @@ public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
 		});
 		super.onCreate(savedInstanceState);
 	}
-	
+
 	@Override
 	public void onDetach() {
 		super.onDetach();
 		mLoadingDialog = null;
-		sunLodingDialog = null;
+
 	}
 
 	/**
@@ -104,23 +95,11 @@ public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
 			mLoadingDialog.show();
 		}
 	}
-	/** 显示加载对话框 **/
-	protected void showSunLoadingDialog(){
-		if(null != sunLodingDialog){
-			sunLodingDialog.show();
-		}
-	}
 
 	/** 取消加载对话框 **/
 	protected void dismissLoadingDialog() {
 		if(null != mLoadingDialog){
 			mLoadingDialog.dismiss();
-		}
-	}
-	/** 取消加载对话框 **/
-	protected void dismissSunLoadingDialog() {
-		if(null != sunLodingDialog){
-			sunLodingDialog.dismiss();
 		}
 	}
 

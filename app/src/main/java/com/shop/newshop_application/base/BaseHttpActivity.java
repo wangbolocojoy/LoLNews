@@ -22,7 +22,7 @@ import okhttp3.Response;
 
 
 /**
- * Create by LuoLin on 2016年12月6日
+ *
  */
 public abstract class BaseHttpActivity extends BaseSimpleTitleActivity {
 

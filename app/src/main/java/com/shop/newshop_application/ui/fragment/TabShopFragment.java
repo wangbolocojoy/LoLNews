@@ -1,5 +1,6 @@
 package com.shop.newshop_application.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -12,7 +13,9 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.ui.activity.news.ShowNewsActivity;
@@ -21,7 +24,13 @@ import com.shop.newshop_application.ui.fragment.itemfragment.ItemComicFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemGetUserFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemNewsFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemVideosFragment;
+import com.shop.newshop_application.utils.GlideImageLoader;
+import com.youth.banner.Banner;
+import com.youth.banner.Transformer;
+import com.youth.banner.loader.ImageLoader;
+import com.youth.banner.loader.ImageLoaderInterface;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +57,9 @@ public class TabShopFragment extends BaseHttpFragment {
     @BindView(R.id.fab)
     FloatingActionButton fab;
     Unbinder unbinder;
+    @BindView(R.id.banner)
+    Banner banner;
+    private List<String> imgList;
 
     private List<Pair<String, Fragment>> items;
 
@@ -59,8 +71,8 @@ public class TabShopFragment extends BaseHttpFragment {
     @Override
     protected boolean initData() {
         items = new ArrayList<>();
-
-
+        imgList=new ArrayList<>();
+        initdata();
         return true;
     }
 
@@ -76,6 +88,15 @@ public class TabShopFragment extends BaseHttpFragment {
         items.add(new Pair<String, Fragment>("图集", new ItemAtlasFragment()));
         viewPager.setAdapter(new MainAdapter(getChildFragmentManager()));
         tab.setupWithViewPager(viewPager);
+        banner.setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                Glide.with(context).load(path).into(imageView);
+            }
+        });
+        banner.setImages(imgList);
+        banner.setBannerAnimation(Transformer.DepthPage);
+        banner.start();
     }
 
     @Override
@@ -92,9 +113,30 @@ public class TabShopFragment extends BaseHttpFragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.fab)
-    public void onViewClicked() {
-        ShowNewsActivity.runActivity(getActivity(),"MyGithub","https://github.com/wangbolocojoy");
+
+    @OnClick({R.id.banner, R.id.fab})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.banner:
+
+                break;
+
+            case R.id.fab:
+                ShowNewsActivity.runActivity(getActivity(), "MyGithub", "https://github.com/wangbolocojoy");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public  void initdata(){
+        imgList.add("http://ossweb-img.qq.com/upload/adw/image/1513092514/1513092514.jpg?_r=1513219840");
+        imgList.add("http://ossweb-img.qq.com/upload/adw/image/1513049171/1513049171.jpg?_r=1513219840");
+        imgList.add("http://ossweb-img.qq.com/upload/adw/image/1513136055/1513136055.jpg?_r=1513219840");
+        imgList.add("http://img.crawler.qq.com/lolwebschool/0/JAutoCMS_LOLWeb_e3d7b79f77788d4d6da840261e6c6775/0");
+
+
+
     }
 
     private class MainAdapter extends FragmentPagerAdapter {

@@ -46,6 +46,11 @@ public class ItemAtlasFragment extends BaseHttpFragment {
     private static int PAGESUM = 0;
     private List<TabShopNewsListInfo.ListBean> listBeanList;
     /**
+     * 视图是否已经初初始化
+     */
+    protected boolean isInit = false;
+    protected boolean isLoad = false;
+    /**
      * set the parent view
      * {@link #setContentView(int)}
      * {@link #setContentView(View)}}
@@ -62,6 +67,7 @@ public class ItemAtlasFragment extends BaseHttpFragment {
      */
     @Override
     protected boolean initData() {
+
         return true;
     }
 
@@ -72,7 +78,7 @@ public class ItemAtlasFragment extends BaseHttpFragment {
     protected void initView() {
         setTitleVisible(false);
         setTitleBackKeyVisible(false);
-        GridLayoutManager gridlayoutManager = new GridLayoutManager(getActivity(),1);
+        GridLayoutManager gridlayoutManager = new GridLayoutManager(getActivity(), 1);
         recyclerview.setLayoutManager(gridlayoutManager);
         fragmentShopItemListAdapter = new FragmentShopItemListAdapter(null);
         fragmentShopItemListAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
@@ -80,7 +86,7 @@ public class ItemAtlasFragment extends BaseHttpFragment {
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
+                refreshLayout.finishRefresh(2000);
                 PAGESUM = PAGESUM + 1;
                 OkGo.<String>get(UrlConstant.LOLNEWSAPI)
                         .params("id", 17)
@@ -104,10 +110,9 @@ public class ItemAtlasFragment extends BaseHttpFragment {
                                 }
                             }
                         });
-
             }
         });
-        refreshLayout.autoRefresh();
+
     }
 
     @Override
@@ -115,12 +120,57 @@ public class ItemAtlasFragment extends BaseHttpFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
+        isInit = true;
+        /**初始化的时候去加载数据**/
+        isCanLoadData();
         return rootView;
     }
+    /**
+     * 是否可以加载数据
+     * 可以加载数据的条件：
+     * 1.视图已经初始化
+     * 2.视图对用户可见
+     */
+    private void isCanLoadData() {
+        if (!isInit) {
+            return;
+        }
 
+        if (getUserVisibleHint()) {
+            lazyLoad();
+            isLoad = true;
+        } else {
+            if (isLoad) {
+                stopLoad();
+            }
+        }
+    }
+    /**
+     * 当视图初始化并且对用户可见的时候去真正的加载数据
+     */
+    public  void lazyLoad(){
+        refreshLayout.autoRefresh();
+    };
+
+    /**
+     * 当视图已经对用户不可见并且加载过数据，如果需要在切换到其他页面时停止加载数据，可以覆写此方法
+     */
+    protected void stopLoad() {
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        isInit = false;
+        isLoad = false;
     }
+    /**
+     * 视图是否已经对用户可见，系统的方法
+     */
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isCanLoadData();
+    }
+
 }

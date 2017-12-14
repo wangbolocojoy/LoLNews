@@ -59,4 +59,5 @@ public class FristActivity extends BaseHttpActivity {
         UiUtils.showMainPage(activity, mExtras);
     }
 
+
 }

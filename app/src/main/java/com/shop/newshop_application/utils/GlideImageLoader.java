@@ -27,11 +27,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lzy.ninegrid.NineGridView;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.utils.helper.ImageLoader;
+import com.youth.banner.loader.ImageLoaderInterface;
 
 import java.io.File;
 
 
-public class GlideImageLoader implements ImageLoader, NineGridView.ImageLoader {
+public class GlideImageLoader implements ImageLoader, NineGridView.ImageLoader{
     @Override
     public void onDisplayImage(Context context, ImageView imageView, String url) {
         Glide.with(context).load(url).into(imageView);

@@ -77,7 +77,7 @@ public class TabNewFragment extends BaseHttpFragment {
                 PAGESUM = PAGESUM + 1;
                 OkGo.<String>get(UrlConstant.API)
                         .params("pageToken", PAGESUM)
-                        .params("kw", "英雄联盟")
+                        .params("catid", "news_society")
                         .params("apikey", "EpO0gJokdSVGPrxCzJycCPBeVgWwP4OeRxqSgmQv7s7r4tiEvrbysInEXKHf4nsD")
                         .execute(new StringCallback() {
                             /**

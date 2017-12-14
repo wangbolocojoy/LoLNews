@@ -3,6 +3,7 @@ package com.shop.newshop_application.ui.activity.news;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Slide;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebResourceRequest;
@@ -10,6 +11,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.r0adkll.slidr.Slidr;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpActivity;
 
@@ -33,7 +35,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
     @Override
     protected void setContent() {
         setContentView(R.layout.activity_show_news);
-
+        Slidr.attach(this);
     }
     @Override
     protected boolean translucentStatusBar() {

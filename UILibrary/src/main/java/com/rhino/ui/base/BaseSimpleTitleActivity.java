@@ -340,4 +340,5 @@ public abstract class BaseSimpleTitleActivity extends BaseActivity {
 	final protected float getDimensionPixelSize(@DimenRes int dimenId){
 		return getBaseResources().getDimensionPixelSize(dimenId);
 	}
+
 }
