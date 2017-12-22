@@ -74,11 +74,17 @@ public class TabNewFragment extends BaseHttpFragment {
             public void onRefresh(RefreshLayout refreshlayout) {
                 refreshlayout.finishRefresh(2000);
                 PAGESUM = PAGESUM + 1;
+                Log.d("11111");
                 OkGo.<String>get(UrlConstant.API)
                         .params("pageToken", PAGESUM)
                         .params("catid", "news_society")
                         .params("apikey", "EpO0gJokdSVGPrxCzJycCPBeVgWwP4OeRxqSgmQv7s7r4tiEvrbysInEXKHf4nsD")
                         .execute(new StringCallback() {
+                            @Override
+                            public void onError(Response<String> response) {
+                                super.onError(response);
+                            }
+
                             /**
                              * 对返回数据进行操作的回调， UI线程
                              *
@@ -90,9 +96,13 @@ public class TabNewFragment extends BaseHttpFragment {
                                 Log.d("info" + info.toString());
                                 if (info != null) {
                                     newslist = new ArrayList<>();
-                                    Log.d(info.getData().get(0).toString());
+//                                    Log.d(info.getData().get(0).toString());
                                     newslist = info.getData();
-                                    fragmentNewsListAdapter.setNewData(newslist);
+                                    if (newslist!=null){
+                                        Log.d("今日头条新闻数量" + newslist.size());
+                                        fragmentNewsListAdapter.setNewData(newslist);
+                                    }
+
                                 }
                             }
                         });
@@ -100,27 +110,6 @@ public class TabNewFragment extends BaseHttpFragment {
             }
         });
         refreshLayout.autoRefresh();
-        recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-
-                Log.d("新位置"+newState);
-            }
-
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-//                if (dy>0){
-//                getTitleView().setVisibility(View.GONE);
-//                }else {
-//                    getTitleView().setVisibility(View.VISIBLE);
-//                }
-            }
-        });
     }
 
 

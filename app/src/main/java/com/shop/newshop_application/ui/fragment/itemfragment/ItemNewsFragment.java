@@ -108,9 +108,14 @@ public class ItemNewsFragment extends LazyLoadFragment {
                         if (info != null) {
                             listBeanList = new ArrayList<>();
                             listBeanList = info.getList();
-                            fragmentShopItemListAdapter.setNewData(listBeanList);
+                            if (listBeanList!=null){
+                                Log.d("新闻条数"+listBeanList.size());
+                                fragmentShopItemListAdapter.setNewData(listBeanList);
+                            }
+
                         }
                     }
                 });
     }
+
 }

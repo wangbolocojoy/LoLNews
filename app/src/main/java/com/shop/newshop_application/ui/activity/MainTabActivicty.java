@@ -36,7 +36,7 @@ public class MainTabActivicty extends BaseHttpTabActivity {
         addTab("Lol",new int[]{R.drawable.ic_shopping_cart_white_24dp},new TabShopFragment());
         addTab("新闻",new int[]{R.drawable.ic_fiber_new_white_24dp},new TabNewFragment());
         addTab("首页",new int[]{R.drawable.ic_home_white_24dp},new TabHomeFragment());
-        addTab("我的",new int[]{R.drawable.ic_person_pin_white_24dp},new TabMineFragment());
+        addTab("购物车",new int[]{R.drawable.ic_person_pin_white_24dp},new TabMineFragment());
     }
 
     @Override

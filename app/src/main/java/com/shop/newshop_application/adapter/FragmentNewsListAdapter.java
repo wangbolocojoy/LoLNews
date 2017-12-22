@@ -32,8 +32,6 @@ import static com.shop.newshop_application.http.result.taoutiaoresult.TouTiaoLis
  */
 
 public class FragmentNewsListAdapter extends BaseQuickAdapter<DataBean,BaseViewHolder>{
-
-
     /**
      * Same as QuickAdapter#QuickAdapter(Context,int) but with
      * some initialization data.
@@ -43,7 +41,6 @@ public class FragmentNewsListAdapter extends BaseQuickAdapter<DataBean,BaseViewH
     public FragmentNewsListAdapter(@Nullable List<DataBean> data) {
         super(R.layout.liststyle_item_new_list_data_item, data);
     }
-
     /**
      * Implement this method and use the helper to adapt the view to the given item.
      *
@@ -65,6 +62,7 @@ public class FragmentNewsListAdapter extends BaseQuickAdapter<DataBean,BaseViewH
                 ShowNewsActivity.runActivity(mContext,item.getTitle(),item.getUrl());
             }
         });
+
         NineGridView nineGridView=helper.getView(R.id.new_img);
         ArrayList<ImageInfo> infos=new ArrayList<>();
         if (item.getImageUrls()!=null&&item.getImageUrls().size()>0){

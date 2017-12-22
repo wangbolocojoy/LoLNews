@@ -14,20 +14,14 @@
  * limitations under the License.
  */
 package com.shop.newshop_application.utils;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
-
 import com.lzy.ninegrid.NineGridView;
-import com.shop.newshop_application.R;
+import com.shop.newshop_application.glide.GlideApp;
 import com.shop.newshop_application.utils.helper.ImageLoader;
-import com.youth.banner.loader.ImageLoaderInterface;
 
 import java.io.File;
 
@@ -35,7 +29,7 @@ import java.io.File;
 public class GlideImageLoader implements ImageLoader, NineGridView.ImageLoader{
     @Override
     public void onDisplayImage(Context context, ImageView imageView, String url) {
-        Glide.with(context).load(url).into(imageView);
+       GlideApp.with(context).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).load(url).skipMemoryCache(true).into(imageView);
     }
 
     @Override
@@ -45,10 +39,11 @@ public class GlideImageLoader implements ImageLoader, NineGridView.ImageLoader{
 
     @Override
     public void displayImage(Activity activity, String path, ImageView imageView, int width, int height) {
-        Glide.with(activity).load(new File(path)).into(imageView);
+        GlideApp.with(activity).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).load(new File(path)).skipMemoryCache(true).into(imageView);
     }
 
     @Override
     public void clearMemoryCache() {
+
     }
 }

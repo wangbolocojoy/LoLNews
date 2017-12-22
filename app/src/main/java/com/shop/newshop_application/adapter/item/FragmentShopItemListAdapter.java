@@ -5,10 +5,12 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.application.MyApplication;
+import com.shop.newshop_application.glide.GlideApp;
 import com.shop.newshop_application.http.result.tabshopitem.TabShopNewsListInfo;
 import com.shop.newshop_application.ui.activity.news.ShowNewsActivity;
 
@@ -31,7 +33,7 @@ public class FragmentShopItemListAdapter extends BaseQuickAdapter<TabShopNewsLis
     protected void convert(BaseViewHolder helper, final TabShopNewsListInfo.ListBean item) {
         helper.setText(R.id.tab_shop_new_list_item_titel, item.getTitle());
         helper.setText(R.id.tab_shop_new_list_item_user, item.getAuthor());
-        Glide.with(MyApplication.getContext()).load(item.getImage_url_small()).into((ImageView) helper.getView(R.id.tab_shop_new_list_item_img));
+        GlideApp.with(mContext).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).load(item.getImage_url_small()).skipMemoryCache(true).into((ImageView) helper.getView(R.id.tab_shop_new_list_item_img));
         helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

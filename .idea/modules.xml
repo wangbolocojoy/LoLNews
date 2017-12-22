@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NewShop_Application.iml" filepath="$PROJECT_DIR$/NewShop_Application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoLNews.iml" filepath="$PROJECT_DIR$/LoLNews.iml" />
+      <module fileurl="file://E:\Android Studio\LoLNews\NewShop_Application.iml" filepath="E:\Android Studio\LoLNews\NewShop_Application.iml" />
       <module fileurl="file://$PROJECT_DIR$/ReViewLibrary/ReViewLibrary.iml" filepath="$PROJECT_DIR$/ReViewLibrary/ReViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/UILibrary/UILibrary.iml" filepath="$PROJECT_DIR$/UILibrary/UILibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

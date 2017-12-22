@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rhino.ui.utils.Log;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.application.MyApplication;
+import com.shop.newshop_application.glide.GlideApp;
 import com.shop.newshop_application.http.result.taoutiaoresult.HomeVideoListInfo;
 import com.shop.newshop_application.http.result.taoutiaoresult.HomeVideoListInfo.MsgBean.ResultBean;
 import com.shop.newshop_application.ui.activity.news.ShowNewsActivity;
@@ -39,10 +41,8 @@ public class FragmentHomelistAdapter extends BaseQuickAdapter<ResultBean,BaseVie
     protected void convert(BaseViewHolder helper, final ResultBean item) {
         helper.setText(R.id.home_video_item_tetil,item.getTitle());
         helper.setText(R.id.home_video_item_video_time,item.getTime());
-        Log.d(item.getTitle());
-        helper.setText(R.id.home_video_item_play,item.getPlay()+"次播放");
         ImageView imageView=helper.getView(R.id.home_video_item_img);
-        Glide.with(MyApplication.getContext()).load(item.getAppthumb()).into((ImageView) helper.getView(R.id.home_video_item_img));
+        GlideApp.with(mContext).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).load(item.getAppthumb()).skipMemoryCache(true).into((ImageView) helper.getView(R.id.home_video_item_img));
         helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             /**
              * Called when a view has been clicked.

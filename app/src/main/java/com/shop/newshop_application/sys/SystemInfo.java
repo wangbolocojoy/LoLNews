@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * Create by LuoLin on 2016年12月6日
+ * Create by u on 2017年12月6日
  */
 public class SystemInfo {
 	/** 网络状态 无网络连接 **/

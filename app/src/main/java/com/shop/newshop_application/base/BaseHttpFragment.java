@@ -29,7 +29,7 @@ import okhttp3.Headers;
 
 
 /**
- * Create by LuoLin on 2016年12月6日
+ * Create by u on 2017年12月6日
  */
 public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
 	Unbinder unbinder;

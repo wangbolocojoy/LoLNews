@@ -8,6 +8,11 @@ import android.support.multidex.MultiDexApplication;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
 import com.lzy.ninegrid.NineGridView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cookie.CookieJarImpl;
@@ -20,6 +25,8 @@ import com.shop.newshop_application.http.HttpRequest;
 import com.shop.newshop_application.utils.GlideImageLoader;
 import com.shop.newshop_application.utils.MyUtils;
 import com.shop.newshop_application.utils.helper.Config;
+import com.squareup.leakcanary.LeakCanary;
+
 import java.io.File;
 
 import okhttp3.OkHttpClient;
@@ -53,6 +60,13 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
         app = this;
         mContext = getApplicationContext();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+        // Normal app init code...
         NineGridView.setImageLoader(new GlideImageLoader());
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         //使用sp保持cookie，如果cookie不过期，则一直有效

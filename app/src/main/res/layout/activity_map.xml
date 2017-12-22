@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <com.shop.newshop_application.views.CustomTextview
+        android:layout_width="120dp"
+        android:layout_height="80dp"/>
 </LinearLayout>

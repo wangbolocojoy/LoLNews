@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpFragment;
+import com.shop.newshop_application.glide.GlideApp;
 import com.shop.newshop_application.ui.activity.news.ShowNewsActivity;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemAtlasFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemComicFragment;
@@ -90,7 +91,7 @@ public class TabShopFragment extends BaseHttpFragment {
         banner.setImageLoader(new ImageLoader() {
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
-                Glide.with(context).load(path).into(imageView);
+                GlideApp.with(context).load(path).into(imageView);
             }
         });
         banner.setImages(imgList);
@@ -103,9 +104,7 @@ public class TabShopFragment extends BaseHttpFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.banner:
-
                 break;
-
             case R.id.fab:
                 ShowNewsActivity.runActivity(getActivity(), "MyGithub", "https://github.com/wangbolocojoy");
                 break;
