@@ -13,6 +13,7 @@ import com.rhino.ui.utils.Log;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.application.MyApplication;
 import com.shop.newshop_application.glide.GlideApp;
+import com.shop.newshop_application.glide.MyGlideMoudle;
 import com.shop.newshop_application.http.result.taoutiaoresult.HomeVideoListInfo;
 import com.shop.newshop_application.http.result.taoutiaoresult.HomeVideoListInfo.MsgBean.ResultBean;
 import com.shop.newshop_application.ui.activity.news.ShowNewsActivity;
@@ -27,6 +28,9 @@ import java.util.List;
  */
 
 public class FragmentHomelistAdapter extends BaseQuickAdapter<ResultBean,BaseViewHolder> {
+
+
+
     public FragmentHomelistAdapter(@Nullable List<ResultBean> data) {
         super(R.layout.liststyle_item_home_list_data,data);
     }

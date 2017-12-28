@@ -39,9 +39,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.news.ShowNewsActivity" />
         <activity android:name=".ui.activity.register.RegisterActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+        <activity android:name=".ui.activity.register.LoginActivity" />
+        <activity android:name=".ui.activity.shoppingshow.ShopingDetailsActivity"></activity>
     </application>
 
 </manifest>

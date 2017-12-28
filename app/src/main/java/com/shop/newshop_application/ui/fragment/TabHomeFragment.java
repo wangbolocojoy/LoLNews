@@ -3,10 +3,10 @@ package com.shop.newshop_application.ui.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -21,17 +21,15 @@ import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.constant.UrlConstant;
 import com.shop.newshop_application.http.result.taoutiaoresult.HomeVideoListInfo;
 import com.shop.newshop_application.utils.helper.JsonHelper;
-
+import com.youth.banner.Banner;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-
 /**
  * Created by Unir|Superman
- * on 2017/11/23 11:09.
+ * on 2017/11/23 11:09
  * on Administrator
  * on NewShop_Application
  */
@@ -45,6 +43,7 @@ public class TabHomeFragment extends BaseHttpFragment {
     private FragmentHomelistAdapter fragmentHomelistAdapter;
     private static int PAGESUM = 0;
     private List<HomeVideoListInfo.MsgBean.ResultBean> homeVideoListInfos;
+
     @Override
     protected void setContent() {
         setContentView(R.layout.tab_home_fragment);
@@ -57,9 +56,9 @@ public class TabHomeFragment extends BaseHttpFragment {
 
     @Override
     protected void initView() {
-        setTitle("首页");
+        setTitleVisible(false);
         setTitleBackKeyVisible(false);
-        GridLayoutManager gridlayoutManager = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridlayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerview.setLayoutManager(gridlayoutManager);
         fragmentHomelistAdapter = new FragmentHomelistAdapter(null);
         fragmentHomelistAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
@@ -91,13 +90,9 @@ public class TabHomeFragment extends BaseHttpFragment {
                                 }
                             }
                         });
-
             }
         });
         refreshLayout.autoRefresh();
     }
-
-
-
 
 }

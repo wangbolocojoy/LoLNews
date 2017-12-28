@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpActivity;
+import com.shop.newshop_application.ui.activity.register.LoginActivity;
 import com.shop.newshop_application.utils.UiUtils;
 
 import butterknife.BindView;
@@ -19,7 +20,8 @@ public class FristActivity extends BaseHttpActivity {
     private Runnable postRunnable = new Runnable() {
         @Override
         public void run() {
-            gotMainPage(FristActivity.this);
+//            gotMainPage(FristActivity.this);
+        gotoActivity(LoginActivity.class);
         }
     };
 
@@ -53,12 +55,6 @@ public class FristActivity extends BaseHttpActivity {
     }
 
 
-    /**
-     * 跳转到主页
-     **/
-    private void gotMainPage(Activity activity) {
-        UiUtils.showMainPage(activity, mExtras);
-    }
 
 
 }

@@ -81,5 +81,7 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.10'  //最新版本
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    compile 'com.gxz.pagerslidingtabstrip:library:1.3'
+
 
 }

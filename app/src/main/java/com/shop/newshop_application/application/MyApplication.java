@@ -28,6 +28,7 @@ import com.shop.newshop_application.utils.helper.Config;
 import com.squareup.leakcanary.LeakCanary;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 
@@ -54,6 +55,7 @@ public class MyApplication extends MultiDexApplication {
         }
         return app;
     }
+
 
     @Override
     public void onCreate() {

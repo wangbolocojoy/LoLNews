@@ -35,7 +35,5 @@ public class MyGlideMoudle extends AppGlideModule {
 
     }
 
-    public MyGlideMoudle() {
-        super();
-    }
+
 }
