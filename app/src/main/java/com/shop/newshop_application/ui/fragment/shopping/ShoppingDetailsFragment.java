@@ -5,7 +5,9 @@ import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.base.LazyLoadFragment;
 
 /**
- * Created by a on 2017/12/28.
+ *
+ * @author a
+ * @date 2017/12/28
  */
 
 public class ShoppingDetailsFragment extends BaseHttpFragment {

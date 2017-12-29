@@ -163,7 +163,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/right_img" />
+                            android:src="@drawable/ic_action_arrow_right" />
                     </LinearLayout>
 
                     <View
@@ -181,7 +181,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
                         android:background="#ffffff"
-                        android:src="@mipmap/item_goods_ensure" />
+                        android:src="@drawable/item_goods_ensure" />
 
                     <!-- 用户点评 -->
                     <View
@@ -250,7 +250,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="6dp"
-                                android:src="@mipmap/right_img" />
+                                android:src="@drawable/ic_action_arrow_right" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -319,7 +319,7 @@
                             android:layout_width="14dp"
                             android:layout_height="9dp"
                             android:scaleType="fitXY"
-                            android:src="@mipmap/top" />
+                            android:src="@drawable/top" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -341,7 +341,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="30dp"
-            android:src="@mipmap/go_top"
+            android:src="@drawable/go_top"
             app:backgroundTint="#ffffff"
             app:borderWidth="0dp"
             app:fabSize="mini"

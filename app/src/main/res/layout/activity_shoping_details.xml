@@ -71,10 +71,8 @@
         </LinearLayout>
     </LinearLayout>
     <com.shop.newshop_application.views.NoScrollViewPager
-        android:id="@+id/shop_viewpager"
+       android:id="@+id/shop_details_vpager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
+        android:layout_height="match_parent">
     </com.shop.newshop_application.views.NoScrollViewPager>
 </LinearLayout>

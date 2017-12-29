@@ -8,8 +8,9 @@ package com.shop.newshop_application.constant;
  */
 
 public class UrlConstant {
-    public static final String  FAINLAPI=" http://192.168.1.5:";
+    public static final String  FAINLAPI="http://192.168.1.11:";
     public static final String  REGISTER=FAINLAPI+"8088/user/regist/sendSmsCode";
+    public static final String  ALLSHOPPING=FAINLAPI+"8082/item/list";
 
     public static String catid;
     public static final String  API="http://120.76.205.241:8000/news/toutiao";

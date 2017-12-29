@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 
 /**
  * 提供禁止滑动功能的自定义ViewPager
+ * @author a
  */
 public class NoScrollViewPager extends ViewPager {
     private boolean noScroll = false;
@@ -14,7 +15,6 @@ public class NoScrollViewPager extends ViewPager {
     public NoScrollViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-
 
     public NoScrollViewPager(Context context) {
         super(context);
@@ -31,18 +31,25 @@ public class NoScrollViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent arg0) {
-        if (noScroll)
+        if (noScroll){
+
             return false;
-        else
+        }
+        else {
             return super.onTouchEvent(arg0);
+        }
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent arg0) {
-        if (noScroll)
+        if (noScroll){
+
             return false;
-        else
+        }
+        else{
+
             return super.onInterceptTouchEvent(arg0);
+        }
     }
 
     @Override
