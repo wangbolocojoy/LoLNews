@@ -57,6 +57,7 @@ public class TabNewFragment extends BaseHttpFragment {
     @Override
     protected boolean initData() {
 
+
         return true;
     }
 
