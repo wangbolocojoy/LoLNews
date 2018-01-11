@@ -10,12 +10,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Pair;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.glide.GlideApp;
@@ -25,26 +21,20 @@ import com.shop.newshop_application.ui.fragment.itemfragment.ItemComicFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemGetUserFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemNewsFragment;
 import com.shop.newshop_application.ui.fragment.itemfragment.ItemVideosFragment;
-import com.shop.newshop_application.utils.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
-import com.youth.banner.loader.ImageLoaderInterface;
-
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by Unir|Superman
  * on 2017/11/23 11:12.
  * on Administrator
  * on NewShop_Application
+ * @author MacBookPor
  */
 
 public class TabShopFragment extends BaseHttpFragment {
@@ -75,7 +65,6 @@ public class TabShopFragment extends BaseHttpFragment {
         initdata();
         return true;
     }
-
 
     @Override
     protected void initView() {

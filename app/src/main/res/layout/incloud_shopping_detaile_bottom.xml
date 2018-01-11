@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_height="48dip">
+<LinearLayout
+    android:id="@+id/shop_goto_home"
+    android:layout_width="0dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <ImageView
+        android:src="@drawable/ic_password"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:text="首页"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/shop_goto_collection"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <ImageView
+            android:src="@drawable/ic_password"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="收藏"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/shop_goto_Customer"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <ImageView
+            android:src="@drawable/ic_password"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="客服"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/shop_goto_shopcar"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:src="@drawable/ic_password"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="购物车"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/shop_add_shop_to_shopcar"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="4">
+
+        <TextView
+            android:gravity="center"
+            android:background="@color/theme_color"
+            android:text="加入购物车"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+</LinearLayout>

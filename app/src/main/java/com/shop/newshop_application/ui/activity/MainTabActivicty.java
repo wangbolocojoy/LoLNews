@@ -1,5 +1,6 @@
 package com.shop.newshop_application.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.KeyEvent;
 
@@ -7,10 +8,13 @@ import com.rhino.ui.utils.ActivityManager;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.application.MyApplication;
 import com.shop.newshop_application.base.BaseHttpTabActivity;
+import com.shop.newshop_application.constant.StringConstant;
 import com.shop.newshop_application.ui.fragment.TabHomeFragment;
 import com.shop.newshop_application.ui.fragment.TabMineFragment;
 import com.shop.newshop_application.ui.fragment.TabNewFragment;
 import com.shop.newshop_application.ui.fragment.TabShopFragment;
+import com.shop.newshop_application.ui.fragment.TabShopMineFragment;
+import com.shop.newshop_application.ui.fragment.TabShoppingCarFragment;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,20 +27,27 @@ import java.util.TimerTask;
  */
 
 public class MainTabActivicty extends BaseHttpTabActivity {
-    public static final int TAB_INDEX_HOME = 0;
-    public static final int TAB_INDEX_SHOP = 1;
-    public static final int TAB_INDEX_NEW = 2;
-    public static final int TAB_INDEX_MINE = 3;
+
     /**
      * 是否能退出app
      **/
     private boolean isExitEnable;
     @Override
     protected void initTabs() {
-        addTab("首页",new int[]{R.drawable.ic_home_white_24dp},new TabHomeFragment());
-        addTab("分类",new int[]{R.drawable.ic_shopping_cart_white_24dp},new TabShopFragment());
-        addTab("购物车",new int[]{R.drawable.ic_fiber_new_white_24dp},new TabNewFragment());
-        addTab("我的",new int[]{R.drawable.ic_person_pin_white_24dp},new TabMineFragment());
+        addTab(StringConstant.HOME,new int[]{R.drawable.ic_home_white_24dp},new TabHomeFragment());
+        addTab(StringConstant.CLASSIFY,new int[]{R.drawable.ic_list},new TabShopFragment());
+        addTab(StringConstant.SHOPCAR,new int[]{R.drawable.ic_shopping_cart_white_24dp},new TabShoppingCarFragment());
+        addTab(StringConstant.MINE,new int[]{R.drawable.ic_person_pin_white_24dp},new TabShopMineFragment());
+    }
+    public void setTab(int a){
+        setCurrentTab(a);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
@@ -73,7 +84,7 @@ public class MainTabActivicty extends BaseHttpTabActivity {
     private void doExit() {
         if (!isExitEnable) {
             isExitEnable = true;
-            showAlert("再按一次将退出程序");
+            showAlert(StringConstant.OUTAPP);
             new Timer().schedule(new TimerTask() {
 
                 @Override
@@ -106,4 +117,6 @@ public class MainTabActivicty extends BaseHttpTabActivity {
     public void setTabItemNewFlag(int index, int num) {
         setNewFlag(index, num, 0 < num);
     }
+
+
 }

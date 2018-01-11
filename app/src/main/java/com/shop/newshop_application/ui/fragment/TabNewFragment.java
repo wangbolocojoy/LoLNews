@@ -1,11 +1,7 @@
 package com.shop.newshop_application.ui.fragment;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzy.okgo.OkGo;
@@ -16,7 +12,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shop.newshop_application.R;
-import com.shop.newshop_application.adapter.FragmentNewsListAdapter;
+import com.shop.newshop_application.adapter.shop.FragmentNewsListAdapter;
 import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.constant.UrlConstant;
 import com.shop.newshop_application.http.result.taoutiaoresult.TouTiaoListInfo;
@@ -26,10 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-//import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 /**
  * Created by Unir|Superman
@@ -97,7 +89,6 @@ public class TabNewFragment extends BaseHttpFragment {
                                 Log.d("info" + info.toString());
                                 if (info != null) {
                                     newslist = new ArrayList<>();
-//                                    Log.d(info.getData().get(0).toString());
                                     newslist = info.getData();
                                     if (newslist!=null){
                                         Log.d("今日头条新闻数量" + newslist.size());

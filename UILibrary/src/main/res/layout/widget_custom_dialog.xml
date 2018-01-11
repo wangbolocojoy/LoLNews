@@ -81,7 +81,6 @@
             android:background="@color/theme_color" />
 
         <LinearLayout
-            android:id="@+id/custom_dialog_key_ll"
             android:layout_width="match_parent"
             android:layout_height="@dimen/custom_dialog_key_height"
             android:layout_alignParentBottom="true"

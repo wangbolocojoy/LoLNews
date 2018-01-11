@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpActivity;
+import com.shop.newshop_application.constant.StringConstant;
 import com.shop.newshop_application.utils.UiUtils;
 import com.shop.newshop_application.views.ClearEditText;
 
@@ -19,7 +20,6 @@ import butterknife.OnClick;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends BaseHttpActivity {
-
 
     @BindView(R.id.login_phone)
     ClearEditText loginPhone;
@@ -46,17 +46,23 @@ public class LoginActivity extends BaseHttpActivity {
 
     @Override
     protected void initView() {
+        setTitle(StringConstant.LOGINTITEL);
+        setTitleBackKeyVisible(false);
         inButterKnifeView();
 
     }
 
+    @Override
+    protected boolean translucentStatusBar() {
+        return true;
+    }
 
     @OnClick({R.id.login_froget_password, R.id.login_button, R.id.login_regist_newid})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login_froget_password:
-                title = "修改密码";
-                button = "确认修改";
+                title = StringConstant.CHANGEPASSWORD;
+                button = StringConstant.CONFIRMPASSWORD;
                 mExtras.putString("t", title);
                 mExtras.putString("d", button);
                 gotoActivity(RegisterActivity.class, mExtras);
@@ -67,8 +73,8 @@ public class LoginActivity extends BaseHttpActivity {
 
                 break;
             case R.id.login_regist_newid:
-                title = "注册";
-                button = "注册";
+                title = StringConstant.REGISTERTITLE;
+                button = StringConstant.REGISTERTITLE;
                 mExtras.putString("t", title);
                 mExtras.putString("d", button);
                 gotoActivity(RegisterActivity.class, mExtras);

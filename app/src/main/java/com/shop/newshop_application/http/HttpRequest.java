@@ -12,8 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.internal.http2.Header;
 
 /**
  * Created by Unir|Superman
@@ -76,58 +79,12 @@ public class HttpRequest {
      */
     public void doPost(String url, HttpParams params, Callback callback) {
 
-//		String httpUrl = buildHttpUrl(url, params);
-//		Log.i("httpUrl = " + httpUrl);
-//		Request.Builder requestBuilder = new Request.Builder().url(httpUrl);
-//		RequestBody mRequestBody = new FormBody.Builder().build();
-//		Request mRequest = requestBuilder.post(mRequestBody).build();
-//		mOkHttpClient.newCall(mRequest).enqueue(callback);
-
-
-        Request.Builder requestBuilder = new Request.Builder().url(url);
-        FormBody.Builder bodyBuilder = new FormBody.Builder();
-
-        StringBuilder httpUrl = new StringBuilder(url);
-        // 是否带有参数
-        if (params != null) {
-            // 反射得到参数对象
-            Class<? extends HttpParams> clazz = params.getClass();
-            // 获取参数对象所有属性
-            Field fields[] = clazz.getDeclaredFields();
-            httpUrl.append("?");
-            for (Field field : fields) {
-                // 突破private属性
-                field.setAccessible(true);
-                // 获取该字段的注解
-                ParamField json = field.getAnnotation(ParamField.class);
-                if (json != null && !TextUtils.isEmpty(json.value())) {
-                    try {
-                        httpUrl.append(json.value() + "="
-                                + String.valueOf(field.get(params)) + "&");
-                        bodyBuilder.add(json.value(), String.valueOf(field.get(params)));
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-
-        if (!TextUtils.isEmpty(token)) {
-            if(httpUrl.toString().equals(url)){
-                httpUrl.append("?");
-            }
-            httpUrl.append("token=" + token + "&");
-            bodyBuilder.add("token", token);
-        }
-
-        if(httpUrl.toString().endsWith("&")){
-            Log.i("httpUrl = " + httpUrl.delete(httpUrl.length()-1, httpUrl.length()).toString());
-        } else {
-            Log.i("httpUrl = " + httpUrl.toString());
-        }
-
-        Request mRequest = requestBuilder.post(bodyBuilder.build()).build();
-        mOkHttpClient.newCall(mRequest).enqueue(callback);
+		String httpUrl = buildHttpUrl(url, params);
+		Log.i("httpUrl = " + httpUrl);
+		Request.Builder requestBuilder = new Request.Builder().url(httpUrl);
+		RequestBody mRequestBody = new FormBody.Builder().build();
+		Request mRequest = requestBuilder.post(mRequestBody).build();
+		mOkHttpClient.newCall(mRequest).enqueue(callback);
     }
 
     /**

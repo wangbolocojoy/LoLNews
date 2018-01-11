@@ -1,443 +1,351 @@
-[
+{"0": {
+      "adv_list": {
+        "item": [
+          {
+            "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05681407209715928.jpg",
+            "type": "url",
+            "data": "http://www.chawo.com/wap/tmpl/product_list.html?keyword=%E7%8B%97&key=4&order=2",
+            "order": "1"
+          },
+          {
+            "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05677062122435737.jpg",
+            "type": "url",
+            "data": "http://www.chawo.com/wap/tmpl/product_detail.html?goods_id=104692",
+            "order": "2"
+          },
+          {
+            "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05671674004312732.jpg",
+            "type": "url",
+            "data": "http://www.chawo.com/wap/tmpl/product_detail.html?goods_id=104709",
+            "order": "3"
+          },
+          {
+            "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05684001076850495.jpg",
+            "type": "url",
+            "data": "http://www.chawo.com/wap/tmpl/product_list.html?keyword=%E7%8F%AD%E7%AB%A0",
+            "order": "4"
+          },
+          {
+            "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05594783694465780.jpg",
+            "type": "url",
+            "data": "http://www.chawo.com/wap/tmpl/product_detail.html?goods_id=104158",
+            "order": "5"
+          },
+          {
+            "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05665612015271354.jpg",
+            "type": "url",
+            "data": "http://www.chawo.com/wap/tmpl/product_list.html?gc_id=11",
+            "order": "6"
+          }
+        ]
+      }
+    },
+    "1": {
+      "home1": {
+        "title": "",
+        "image": "http://www.chawo.com/data/upload/mobile/special/s0/s0_05672757138790853.jpg",
+        "type": "url",
+        "data": "http://www.chawo.com/wap/tmpl/product_list.html?keyword=2017%E5%B9%B4%E8%80%81%E5%90%8C%E5%BF%97%20%E8%89%AF%E5%93%81",
+        "item": null
+      }
+    },
+    "2": {
+      "goods": {
+        "title": "普洱生茶",
+        "item": [
+          {
+            "goods_id": "104652",
+            "goods_name": "2015年大益 小金沱 生茶 36克/盒",
+            "goods_promotion_price": "25.80",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05659545651004846_360.jpg",
+            "order": "0"
+          },
+          {
+            "goods_id": "103640",
+            "goods_name": "2017年下关 大理沱茶 生茶 100克/沱 1沱",
+            "goods_promotion_price": "18.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/06/2_05501639519592888_360.jpg",
+            "order": "1"
+          },
+          {
+            "goods_id": "104158",
+            "goods_name": "2017年中茶 臻品黄印青饼 生茶 357克/饼 单片",
+            "goods_promotion_price": "388.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/08/2_05573160446320206_360.jpg",
+            "order": "3"
+          },
+          {
+            "goods_id": "103832",
+            "goods_name": "2017年 大雪山大树纯料茶 春茶 生茶 357克/饼 单片",
+            "goods_promotion_price": "88.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/06/2_05518032651298266_360.jpg",
+            "order": "4"
+          }
+        ]
+      }
+    },
+    "3": {
+      "goods": {
+        "title": "普洱熟茶",
+        "item": [
+          {
+            "goods_id": "104718",
+            "goods_name": "2017年大益 8562 1701批次 熟茶 357克/饼",
+            "goods_promotion_price": "62.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05676034487347634_360.jpg",
+            "order": "0"
+          },
+          {
+            "goods_id": "104689",
+            "goods_name": "2017年下关 便装销法沱 熟茶 250克/沱",
+            "goods_promotion_price": "38.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05663395283570999_360.jpg",
+            "order": "1"
+          },
+          {
+            "goods_id": "104301",
+            "goods_name": "2017年中茶 7581 单片装 熟茶 250克/砖",
+            "goods_promotion_price": "88.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05671890230647455_360.jpg",
+            "order": "2"
+          },
+          {
+            "goods_id": "101114",
+            "goods_name": "2007年八角亭 黎明茶厂 越陈越香 熟茶 357克",
+            "goods_promotion_price": "102.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2015/07/2_04904426264212852_360.jpg",
+            "order": "3"
+          }
+        ]
+      }
+    },
+    "4": {
+      "goods": {
+        "title": "红茶",
+        "item": [
+          {
+            "goods_id": "103275",
+            "goods_name": "2017年下关 下关红 红茶 300克/袋",
+            "goods_promotion_price": "126.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/03/2_05429099907650471_360.jpg",
+            "order": ""
+          },
+          {
+            "goods_id": "100480",
+            "goods_name": "凤牌滇红 经典58 纸袋装 380克/袋 1包",
+            "goods_promotion_price": "160.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05655527427067517_360.jpg",
+            "order": ""
+          },
+          {
+            "goods_id": "103616",
+            "goods_name": "千山叶 云南滇红茶 大金芽 100克/罐",
+            "goods_promotion_price": "98.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/06/2_05499784479135557_360.jpg",
+            "order": "0"
+          },
+          {
+            "goods_id": "103138",
+            "goods_name": "[评测]滇红1号(滇红一号) 工夫红茶 蒲门 滇红茶 300克/袋 1包",
+            "goods_promotion_price": "48.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/02/2_05404860026940225_360.jpg",
+            "order": "0"
+          }
+        ]
+      }
+    },
+    "5": {
+      "goods": {
+        "title": "花草茶",
+        "item": [
+          {
+            "goods_id": "104067",
+            "goods_name": "千山叶 玫瑰荷叶丽人饮 组合花草茶 220克/盒",
+            "goods_promotion_price": "30.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/08/2_05550979309136423_360.jpg",
+            "order": ""
+          },
+          {
+            "goods_id": "104065",
+            "goods_name": "千山叶 金银枸菊桑叶饮 组合花草茶 200克/盒",
+            "goods_promotion_price": "30.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/08/2_05550978771330726_360.jpg",
+            "order": "0"
+          },
+          {
+            "goods_id": "104064",
+            "goods_name": "千山叶 桂圆枸杞红枣茶 组合花草茶 240克/盒",
+            "goods_promotion_price": "30.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/08/2_05550978398208893_360.jpg",
+            "order": "0"
+          },
+          {
+            "goods_id": "104063",
+            "goods_name": "千山叶 桂花雪梨咽喉茶 组合花草茶 240克/盒",
+            "goods_promotion_price": "42.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/08/2_05550977955641537_360.jpg",
+            "order": "0"
+          }
+        ]
+      }
+    },
+    "6": {
+      "goods": {
+        "title": "绿茶",
+        "item": [
+          {
+            "goods_id": "104179",
+            "goods_name": "2017年下关 苍山秀芽 绿茶 100克/盒",
+            "goods_promotion_price": "60.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/09/2_05578631333748481_360.jpg",
+            "order": "0"
+          },
+          {
+            "goods_id": "104180",
+            "goods_name": "嘉木 云南滇青绿茶 春之绿小毛峰 150克/袋",
+            "goods_promotion_price": "30.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/09/2_05579211054910309_360.jpg",
+            "order": "1"
+          },
+          {
+            "goods_id": "102884",
+            "goods_name": "蒲门 云南滇青绿茶 枝新新芽特级 300克/包",
+            "goods_promotion_price": "112.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2016/11/2_05327808544960143_360.jpg",
+            "order": "3"
+          },
+          {
+            "goods_id": "103612",
+            "goods_name": "千山叶 云南滇青绿茶 高香玉螺 300克/罐",
+            "goods_promotion_price": "68.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/2/2017/06/2_05499703654999626_360.jpg",
+            "order": "4"
+          }
+        ]
+      }
+    },
+    "7": {
+      "goods": {
+        "title": "茶具",
+        "item": [
+          {
+            "goods_id": "104337",
+            "goods_name": "汉瓦壶200cc 黄龙山原矿清水泥【顾群伟作品】宜兴正品紫砂壶",
+            "goods_promotion_price": "495.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/3/2017/10/3_05619378957502492_360.jpg",
+            "order": "1"
+          },
+          {
+            "goods_id": "103260",
+            "goods_name": "西施-莲藕款250cc 原矿黄龙山老清水泥【朱大伟作品】宜兴名家正品紫砂壶",
+            "goods_promotion_price": "880.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/3/2017/02/3_05416373222929843_360.jpg",
+            "order": "2"
+          },
+          {
+            "goods_id": "104385",
+            "goods_name": "建水紫陶 柴烧斗笠杯65cc【杨庆国作品】全手工名家正品，",
+            "goods_promotion_price": "296.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/3/2017/10/3_05623729822523426_360.jpg",
+            "order": "3"
+          },
+          {
+            "goods_id": "104379",
+            "goods_name": "建水紫陶 合家欢260cc【苏佛涛、种玉作品】全手工名家正品",
+            "goods_promotion_price": "868.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/3/2017/10/3_05626349357987026_360.jpg",
+            "order": "4"
+          }
+        ]
+      }
+    },
+    "8": {
+      "goods": {
+        "title": "实木大板",
+        "item": [
+          {
+            "goods_id": "104286",
+            "goods_name": "非洲黄花梨大板 实木大板桌 240*94*10",
+            "goods_promotion_price": "4800.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/5/2017/10/5_05626929906261398_360.png",
+            "order": ""
+          },
+          {
+            "goods_id": "104283",
+            "goods_name": "非洲草花梨大板 实木大板桌 241*88*11",
+            "goods_promotion_price": "5000.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/5/2017/10/5_05626929785595908_360.png",
+            "order": ""
+          },
+          {
+            "goods_id": "104282",
+            "goods_name": "非洲黄花梨大板 实木大板桌 205*84*11",
+            "goods_promotion_price": "4200.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/5/2017/10/5_05626929824269686_360.png",
+            "order": ""
+          },
+          {
+            "goods_id": "104285",
+            "goods_name": "非洲红花梨大板桌 实木大板桌 230*81*10",
+            "goods_promotion_price": "4300.00",
+            "goods_image": "http://www.chawo.com/data/upload/shop/store/goods/5/2017/10/5_05626929913486233_360.png",
+            "order": null
+          }
+        ]
+      }
+    },
+    "nav": [
       {
-        "category": "novel_channel",
-        "web_url": "https://ic.snssdk.com/novel_channel/",
-        "flags": 1,
-        "name": "小说",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 5,
-        "icon_url": ""
+        "name": "产品分类",
+        "url": "/wap/tmpl/product_first_categroy.html",
+        "icon": "bars"
       },
       {
-        "category": "news_fashion",
-        "web_url": "",
-        "flags": 0,
-        "name": "时尚",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497898084272641",
-        "type": 4,
-        "icon_url": ""
+        "name": "近期新品",
+        "url": "/wap/tmpl/product_list.html?key=4&order=2",
+        "icon": "level-up"
       },
       {
-        "category": "news_history",
-        "web_url": "",
-        "flags": 0,
-        "name": "历史",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497901590710786",
-        "type": 4,
-        "icon_url": ""
+        "name": "限时折扣",
+        "url": "/wap/tmpl/product_list.html?xianshi=1",
+        "icon": "clock-o"
       },
       {
-        "category": "news_baby",
-        "web_url": "",
-        "flags": 0,
-        "name": "育儿",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497900164647426",
-        "type": 4,
-        "icon_url": ""
+        "name": "茶窝秒杀",
+        "url": "/wap/miaosha.html",
+        "icon": "bolt"
       },
       {
-        "category": "live_talk",
-        "web_url": "",
-        "flags": 1,
-        "name": "直播",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
+        "name": "值得买",
+        "url": "/wap/special.html?special_id=5",
+        "icon": "thumbs-o-up"
       },
       {
-        "category": "funny",
-        "web_url": "",
-        "flags": 0,
-        "name": "搞笑",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497900768627201",
-        "type": 4,
-        "icon_url": ""
+        "name": "优惠套餐",
+        "url": "/wap/taocan.html",
+        "icon": "th-large"
       },
       {
-        "category": "digital",
-        "web_url": "",
-        "flags": 0,
-        "name": "数码",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497897518041601",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_food",
-        "web_url": "",
-        "flags": 0,
-        "name": "美食",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497899774577154",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_regimen",
-        "web_url": "",
-        "flags": 0,
-        "name": "养生",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497901406161409",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "movie",
-        "web_url": "",
-        "flags": 0,
-        "name": "电影",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497900554717698",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "cellphone",
-        "web_url": "",
-        "flags": 0,
-        "name": "手机",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6213187412705675778",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_travel",
-        "web_url": "",
-        "flags": 0,
-        "name": "旅游",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497897899723265",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "宠物",
-        "web_url": "",
-        "flags": 0,
-        "name": "宠物",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215847700051528193",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "emotion",
-        "web_url": "",
-        "flags": 0,
-        "name": "情感",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215845055769348610",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_home",
-        "web_url": "",
-        "flags": 0,
-        "name": "家居",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497901804620289",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_edu",
-        "web_url": "",
-        "flags": 0,
-        "name": "教育",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497897312520705",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_agriculture",
-        "web_url": "",
-        "flags": 0,
-        "name": "三农",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215847700454181377",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "pregnancy",
-        "web_url": "",
-        "flags": 0,
-        "name": "孕产",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6213187415759129090",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_culture",
-        "web_url": "",
-        "flags": 0,
-        "name": "文化",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497897710979586",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_game",
-        "web_url": "",
-        "flags": 0,
-        "name": "游戏",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497899027991042",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "stock",
-        "web_url": "",
-        "flags": 0,
-        "name": "股票",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6213187421031369217",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "science_all",
-        "web_url": "",
-        "flags": 0,
-        "name": "科学",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215848044378720770",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_comic",
-        "web_url": "",
-        "flags": 0,
-        "name": "动漫",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497895852902913",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_story",
-        "web_url": "",
-        "flags": 0,
-        "name": "故事",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497902182107649",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "news_collect",
-        "web_url": "",
-        "flags": 0,
-        "name": "收藏",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215847700907166210",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "boutique",
-        "web_url": "",
-        "flags": 0,
         "name": "精选",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
+        "url": "/wap/special.html?special_id=6",
+        "icon": "star"
       },
       {
-        "category": "essay_saying",
-        "web_url": "",
-        "flags": 0,
-        "name": "语录",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 3,
-        "icon_url": ""
+        "name": "买就送",
+        "url": "/wap/tmpl/product_list.html?gift=1",
+        "icon": "cart-plus"
       },
       {
-        "category": "news_astrology",
-        "web_url": "",
-        "flags": 0,
-        "name": "星座",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497898268822018",
-        "type": 4,
-        "icon_url": ""
+        "name": "积分兑换",
+        "url": "/wap/tmpl/points/point_list.html",
+        "icon": "gratipay"
       },
       {
-        "category": "image_wonderful",
-        "web_url": "",
-        "flags": 0,
-        "name": "美图",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 1,
-        "icon_url": ""
-      },
-      {
-        "category": "rumor",
-        "web_url": "",
-        "flags": 0,
-        "name": "辟谣",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "hotsoon",
-        "web_url": "",
-        "flags": 0,
-        "name": "火山直播",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "中国新唱将",
-        "web_url": "",
-        "flags": 0,
-        "name": "中国新唱将",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6331936063229004290",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "weitoutiao",
-        "web_url": "",
-        "flags": 0,
-        "name": "微头条",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "positive",
-        "web_url": "",
-        "flags": 0,
-        "name": "正能量",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6215497898474342913",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "high_court",
-        "web_url": "",
-        "flags": 0,
-        "name": "互联网法院",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "彩票",
-        "web_url": "",
-        "flags": 0,
-        "name": "彩票",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6213185685910718978",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "快乐男声",
-        "web_url": "",
-        "flags": 0,
-        "name": "快乐男声",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "6213176774847629825",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "中国好表演",
-        "web_url": "",
-        "flags": 0,
-        "name": "中国好表演",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "nineteenth",
-        "web_url": "",
-        "flags": 0,
-        "name": "新时代",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
-      },
-      {
-        "category": "media",
-        "web_url": "",
-        "flags": 0,
-        "name": "传媒",
-        "tip_new": 0,
-        "default_add": 0,
-        "concern_id": "",
-        "type": 4,
-        "icon_url": ""
+        "name": "签到有礼",
+        "url": "/wap/tmpl/member/member.html",
+        "icon": "user-o"
       }
     ]
+  }
+
 

@@ -27,7 +27,7 @@ public class CookiejarManger implements CookieJar {
      * 这里注册需要你保存Cookie的URL
      */
     private String COOKIE_URL[] = new String[]{
-            UrlConstant.API
+            UrlConstant.CHECKALLSHOPPINGDETAILINFO
 
     };
 

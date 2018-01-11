@@ -1,8 +1,11 @@
 package com.shop.newshop_application.ui.fragment.shopping;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +25,7 @@ import com.rhino.ui.utils.Log;
 import com.shop.newshop_application.R;
 import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.glide.GlideApp;
+import com.shop.newshop_application.http.result.shop.ShopDetail_JesonBean;
 import com.shop.newshop_application.ui.activity.shoppingshow.ShopingDetailsActivity;
 import com.shop.newshop_application.ui.fragment.shopping.info.InfoConfigFragment;
 import com.shop.newshop_application.ui.fragment.shopping.info.InfoWebFragment;
@@ -43,7 +47,7 @@ import butterknife.Unbinder;
  */
 
 public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetailsLayout.OnSlideDetailsListener{
-
+    public final static String JSON = "json";
     List<String> BannerImgList;
     Unbinder unbinder;
     @BindView(R.id.vp_item_goods_img)
@@ -107,13 +111,29 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
     private ShopingDetailsActivity activity;
+    private ShopDetail_JesonBean jesonBean;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         activity= (ShopingDetailsActivity) context;
-
+        activity.setHandler(mHandler);
     }
-
+    @SuppressLint("HandlerLeak")
+    public Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(android.os.Message msg) {
+            switch (msg.what) {
+                case 1:
+                    Log.d("收到消息");
+                Bundle bundle=msg.getData();
+                jesonBean= (ShopDetail_JesonBean) bundle.getSerializable(JSON);
+                addData();
+                    break;
+                    default:
+                        break;
+            }
+        }
+    };
     @Override
     protected void setContent() {
         setContentView(R.layout.fragment_shopping_info);
@@ -122,11 +142,11 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
     @Override
     protected boolean initData() {
         BannerImgList = new ArrayList<>();
-        addData();
         fragmentList = new ArrayList<>();
         tabTextList = new ArrayList<>();
-        tabTextList.add(tvGoodsDetail);
-        tabTextList.add(tvGoodsConfig);
+
+
+
         return true;
     }
 
@@ -135,6 +155,8 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
     protected void initView() {
         Log.d("商品f");
         setTitleVisible(false);
+        tabTextList.add(tvGoodsDetail);
+        tabTextList.add(tvGoodsConfig);
 //        setDetailData();
         tvOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         fabUpSlide.hide();
@@ -147,18 +169,25 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
         });
         vpItemGoodsImg.setImages(BannerImgList);
 
+
         vpItemGoodsImg.setBannerAnimation(Transformer.RotateDown);
-        vpItemGoodsImg.start();
 
     }
 
-
     private void addData() {
-        BannerImgList.add("http://img4.hqbcdn.com/product/79/f3/79f3ef1b0b2283def1f01e12f21606d4.jpg");
-        BannerImgList.add("http://img14.hqbcdn.com/product/77/6c/776c63e6098f05fdc5639adc96d8d6ea.jpg");
-        BannerImgList.add("http://img13.hqbcdn.com/product/41/ca/41cad5139371e4eb1ce095e5f6224f4d.jpg");
-        BannerImgList.add("http://img10.hqbcdn.com/product/fa/ab/faab98caca326949b87b770c8080e6cf.jpg");
-        BannerImgList.add("http://img2.hqbcdn.com/product/6b/b8/6bb86086397a8cd0525c449f29abfaff.jpg");
+        for (int i = 0; i <jesonBean.getDatas().getImage_list().size() ; i++) {
+                BannerImgList.add(jesonBean.getDatas().getImage_list().get(i).get_mid());
+        }
+        Log.d("收到"+BannerImgList.size()+"张图片");
+        vpItemGoodsImg.setImages(BannerImgList);
+
+        vpItemGoodsImg.start();
+
+//        BannerImgList.add("http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05659545651004846_360.jpg");
+//        BannerImgList.add("http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05659546500503824_360.jpg");
+//        BannerImgList.add("http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05659546516346281_360.jpg");
+//        BannerImgList.add("http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05659546533300064_360.jpg");
+//        BannerImgList.add("http://www.chawo.com/data/upload/shop/store/goods/2/2017/12/2_05659546553217144_360.jpg");
         //初始化商品图片轮播
     }
 
@@ -206,19 +235,24 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
                 //上拉查看图文详情
                 svSwitch.smoothOpen(true);
                 break;
-            case R.id.ll_goods_detail:
+            case R.id.fab_up_slide:
                 //点击滑动到顶部
                 svGoodsInfo.smoothScrollTo(0, 0);
                 svSwitch.smoothClose(true);
                 break;
-            case R.id.ll_goods_config:
+            case R.id.ll_goods_detail:
                 //商品详情tab
                 nowIndex = 0;
                 scrollCursor();
                 switchFragment(nowFragment, infoWebFragment);
                 nowFragment = infoWebFragment;
                 break;
-            case R.id.fab_up_slide:
+            case R.id.ll_goods_config:
+                //规格参数tab
+                nowIndex = 1;
+                scrollCursor();
+                switchFragment(nowFragment, infoConfigFragment);
+                nowFragment = infoConfigFragment;
                 break;
             default:
                 break;
@@ -227,6 +261,7 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
     /**
      * 滑动游标
      */
+    @SuppressLint("ResourceAsColor")
     private void scrollCursor() {
         TranslateAnimation anim = new TranslateAnimation(fromX, nowIndex * vTabCursor.getWidth(), 0, 0);
         anim.setFillAfter(true);//设置动画结束时停在动画结束的位置
@@ -237,7 +272,7 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
 
         //设置Tab切换颜色
         for (int i = 0; i < tabTextList.size(); i++) {
-            tabTextList.get(i).setTextColor(i == nowIndex ? getResources().getColor(R.color.red) : getResources().getColor(R.color.black_30));
+            tabTextList.get(i).setTextColor(i == nowIndex ? R.color.theme_color :R.color.black);
         }
     }
     /**
@@ -258,4 +293,5 @@ public class ShoppingInfoFragment extends BaseHttpFragment implements SlideDetai
             }
         }
     }
+
 }

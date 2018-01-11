@@ -28,6 +28,7 @@ import com.shop.newshop_application.utils.helper.Config;
 import com.squareup.leakcanary.LeakCanary;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -47,6 +48,7 @@ public class MyApplication extends MultiDexApplication {
     /** http请求工具类 **/
     /** http请求工具类 **/
     private HttpRequest mHttpRequest;
+    public static List<Object>ShoppingCar;
     /** 单例的application对象 **/
     private static MyApplication app;
     public static MyApplication getInstance() {
@@ -83,10 +85,11 @@ public class MyApplication extends MultiDexApplication {
                 .setOkHttpClient(builder.build());
 
         mHttpRequest = new HttpRequest(mContext);
-
+        initCrashHandler();
         Utils.init(this);
         CrashUtils.init();
         initDebug(mContext);
+        ShoppingCar=new ArrayList<>();
 
     }
 

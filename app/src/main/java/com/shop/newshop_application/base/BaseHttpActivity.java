@@ -128,7 +128,7 @@ public abstract class BaseHttpActivity extends BaseSimpleTitleActivity {
 	 * @return true 网络正常
 	 */
 	protected boolean checkNetWork(){
-		if (NetworkUtils.isConnected()&&NetworkUtils.isAvailableByPing()) {
+		if (NetworkUtils.isConnected()) {
 			showAlert("网络不可用");
 			return false;
 		}

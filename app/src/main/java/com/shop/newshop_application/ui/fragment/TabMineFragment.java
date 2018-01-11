@@ -10,13 +10,11 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shop.newshop_application.R;
-import com.shop.newshop_application.adapter.item.FragmentMineListAdapter;
+import com.shop.newshop_application.adapter.shop.FragmentMineListAdapter;
 import com.shop.newshop_application.base.BaseHttpFragment;
 import com.shop.newshop_application.constant.UrlConstant;
 import com.shop.newshop_application.http.result.mine.MineShopSumListInfo;
 import com.shop.newshop_application.utils.helper.JsonHelper;
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -68,7 +66,7 @@ public class TabMineFragment extends BaseHttpFragment {
 
     public void getallshoppinginfo() {
         if (!checkNetWork()) {
-            OkGo.<String>post(UrlConstant.ALLSHOPPING)
+            OkGo.<String>post(UrlConstant.CHECKALLSHOPPINGLIST)
                     .execute(new StringCallback() {
                         @Override
                         public void onSuccess(Response<String> response) {
@@ -76,7 +74,10 @@ public class TabMineFragment extends BaseHttpFragment {
                             if (shopSumListInfos.getData() != null) {
                                 fragmentMineListAdapter.setNewData(shopSumListInfos.getData());
 
+                            }else {
+                                fragmentMineListAdapter.setEmptyView(getView());
                             }
+
                         }
                     });
         }

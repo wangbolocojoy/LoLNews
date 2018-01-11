@@ -1,8 +1,11 @@
 package com.shop.newshop_application.base;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +14,17 @@ import com.blankj.utilcode.util.NetworkUtils;
 import com.lzy.okgo.model.Response;
 import com.rhino.ui.base.BaseSimpleTitleFragment;
 import com.rhino.ui.utils.AlertToast;
+import com.rhino.ui.utils.Log;
 import com.rhino.ui.widget.LoadingDialog;
 import com.rhino.ui.widget.SunLodingDialog;
+import com.shop.newshop_application.application.MyApplication;
+import com.shop.newshop_application.http.request.HttpParams;
 import com.shop.newshop_application.utils.UiUtils;
 import com.youth.banner.Banner;
 
 import java.io.File;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -25,6 +32,7 @@ import java.util.Set;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Headers;
 
 
@@ -144,125 +152,145 @@ public abstract class BaseHttpFragment extends BaseSimpleTitleFragment {
 		}
 		return true;
 	}
-	
 
+	/**
+	 * 此处可以更新ui
+	 * @param event 成功或失败
+	 * @param url 请求url
+	 * @param data 请求得到的数据
+	 * @param reqData 请求的数据
+	 */
+	protected void CallbackHandler(int event, String url, String data, Object reqData) {
 
+	}
+	/** 将请求结果放在handle处理，callback可以更新ui **/
+	@SuppressLint("HandlerLeak")
+	protected Handler mHttpHandler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			Bundle b = msg.getData();
+			int event = b.getInt("event");
+			String url = b.getString("url");
+			String data = b.getString("data");
+			Object reqData = msg.obj;
+			if(!isPageAlive()){
+				Log.e("The fragment is not alive");
+				return;
+			}
+			CallbackHandler(event, url, data, reqData);
+		}
+	};
 
-	protected <T> void handleResponse(T data) {
-		Response<T> response = new Response<>();
-		response.setBody(data);
-		handleResponse(response);
+	/**
+	 * 发送消息
+	 * @param event 请求结果EVENT_XXX
+	 * @param url 请求url
+	 * @param data 请求返回数据
+	 * @param reqData 请求数据
+	 */
+	protected void sendMsg(int event, String url, String data, Object reqData){
+		Message msg = mHttpHandler.obtainMessage();
+		Bundle b = new Bundle();
+		b.putInt("event", event);
+		b.putString("url", url);
+		b.putString("data", data);
+		msg.setData(b);
+		msg.obj = reqData;
+		mHttpHandler.sendMessage(msg);
 	}
 
-	protected <T> void handleResponse(Response<T> response) {
-		StringBuilder sb;
-		Call call = response.getRawCall();
-		if (call != null) {
+	/** 请求成功 **/
+	public static final int EVENT_SUCCESS = 0x1;
+	/** 请求失败 **/
+	public static final int EVENT_FAILED = 0x2;
 
-			Headers requestHeadersString = call.request().headers();
-			Set<String> requestNames = requestHeadersString.names();
-			sb = new StringBuilder();
-			for (String name : requestNames) {
-				sb.append(name).append(" ： ").append(requestHeadersString.get(name)).append("\n");
-			}
-
-		} else {
-
-		}
-		T body = response.body();
-		if (body == null) {
-
-		} else {
-			if (body instanceof String) {
-
-			} else if (body instanceof List) {
-				sb = new StringBuilder();
-				List list = (List) body;
-				for (Object obj : list) {
-					sb.append(obj.toString()).append("\n");
-				}
-
-			} else if (body instanceof Set) {
-				sb = new StringBuilder();
-				Set set = (Set) body;
-				for (Object obj : set) {
-					sb.append(obj.toString()).append("\n");
-				}
-
-			} else if (body instanceof Map) {
-				sb = new StringBuilder();
-				Map map = (Map) body;
-				Set keySet = map.keySet();
-				for (Object key : keySet) {
-					sb.append(key.toString()).append(" ： ").append(map.get(key)).append("\n");
-				}
-
-			} else if (body instanceof File) {
-				File file = (File) body;
-
-			} else if (body instanceof Bitmap) {
-
-			} else {
-
-			}
-		}
-
-		okhttp3.Response rawResponse = response.getRawResponse();
-		if (rawResponse != null) {
-			Headers responseHeadersString = rawResponse.headers();
-			Set<String> names = responseHeadersString.names();
-			sb = new StringBuilder();
-			sb.append("url ： ").append(rawResponse.request().url()).append("\n\n");
-			sb.append("stateCode ： ").append(rawResponse.code()).append("\n");
-			for (String name : names) {
-				sb.append(name).append(" ： ").append(responseHeadersString.get(name)).append("\n");
-			}
-
-		} else {
-
-		}
+	/**
+	 * 是否请求成功
+	 * @param event 请求结果
+	 * @return true 成功
+	 */
+	protected boolean isHttpRequestSuccess(int event){
+		return EVENT_SUCCESS == event;
 	}
 
-	protected <T> void handleError() {
-		Response<T> response = new Response<>();
-		handleResponse(response);
+	/**
+	 * 发起post请求
+	 * @param url 请求rul
+	 */
+	protected void doPost(final String url){
+		doPost(url, null);
 	}
 
-	protected <T> void handleError(Response<T> response) {
-		if (response == null){
-			return;
-		}
-		if (response.getException() != null) {
-			response.getException().printStackTrace();
-		}
-		StringBuilder sb;
-		Call call = response.getRawCall();
-		if (call != null) {
-
-			Headers requestHeadersString = call.request().headers();
-			Set<String> requestNames = requestHeadersString.names();
-			sb = new StringBuilder();
-			for (String name : requestNames) {
-				sb.append(name).append(" ： ").append(requestHeadersString.get(name)).append("\n");
-			}
-
-		} else {
-
-		}
-
-
-		okhttp3.Response rawResponse = response.getRawResponse();
-		if (rawResponse != null) {
-			Headers responseHeadersString = rawResponse.headers();
-			Set<String> names = responseHeadersString.names();
-			sb = new StringBuilder();
-			sb.append("stateCode ： ").append(rawResponse.code()).append("\n");
-			for (String name : names) {
-				sb.append(name).append(" ： ").append(responseHeadersString.get(name)).append("\n");
-			}
-
-		} else {
-
-		}
+	/**
+	 * 发起post请求
+	 * @param url 请求rul
+	 * @param params 请求参数
+	 */
+	protected void doPost(final String url, HttpParams params){
+		doPost(url, params, null);
 	}
+
+	/**
+	 * 发起post请求
+	 * @param url 请求rul
+	 * @param params 请求参数
+	 * @param reqData 请求数据
+	 */
+	protected void doPost(final String url, HttpParams params, final Object reqData){
+		MyApplication.getInstance().getHttpRequest().doPost(url, params, new Callback() {
+
+			@Override
+			public void onFailure(Call arg0, IOException arg1) {
+				sendMsg(EVENT_FAILED, url, arg1.toString(), reqData);
+			}
+
+			@Override
+			public void onResponse(Call arg0, okhttp3.Response arg1)
+					throws IOException {
+				sendMsg(EVENT_SUCCESS, url, arg1.body().string(), reqData);
+			}
+		});
+	}
+
+	/**
+	 * 发起get请求
+	 * @param url 请求rul
+	 */
+	protected void doGet(final String url){
+		doGet(url, null);
+	}
+
+	/**
+	 * 发起get请求
+	 * @param url 请求rul
+	 * @param params 请求参数
+	 */
+	protected void doGet(final String url, HttpParams params){
+		doGet(url, params, null);
+	}
+
+	/**
+	 * 发起get请求
+	 * @param url 请求rul
+	 * @param params 请求参数
+	 * @param reqData 请求数据
+	 */
+	protected void doGet(final String url, HttpParams params, final Object reqData){
+		MyApplication.getInstance().getHttpRequest().doPost(url, params, new Callback() {
+
+			@Override
+			public void onFailure(Call arg0, IOException arg1) {
+				sendMsg(EVENT_FAILED, url, arg1.toString(), reqData);
+			}
+
+			@Override
+			public void onResponse(Call arg0, okhttp3.Response arg1)
+					throws IOException {
+				sendMsg(EVENT_SUCCESS, url, arg1.body().string(), reqData);
+			}
+		});
+	}
+
+
+
 }

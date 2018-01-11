@@ -1,11 +1,7 @@
 package com.shop.newshop_application.ui.fragment.itemfragment;
 
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzy.okgo.OkGo;
@@ -16,8 +12,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shop.newshop_application.R;
-import com.shop.newshop_application.adapter.item.FragmentShopItemListAdapter;
-import com.shop.newshop_application.base.BaseHttpFragment;
+import com.shop.newshop_application.adapter.shop.FragmentShopItemListAdapter;
 import com.shop.newshop_application.base.LazyLoadFragment;
 import com.shop.newshop_application.constant.UrlConstant;
 import com.shop.newshop_application.http.result.tabshopitem.TabShopNewsListInfo;
@@ -27,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by Unir|Superman

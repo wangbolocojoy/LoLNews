@@ -33,7 +33,7 @@ public abstract class BaseTabActivity extends BaseActivity implements
 	/**
 	 * the custom tabHost
 	 */
-	private CustomTabHost tabHost;
+	private  CustomTabHost tabHost;
 	/**
 	 * the line closed the tab
 	 */
@@ -56,7 +56,7 @@ public abstract class BaseTabActivity extends BaseActivity implements
 	 * the tab's index what selected, the default index is 0, it can be changed
 	 * in derived class by setCurrentTab().
 	 **/
-	private int currentTab = -1;
+	private  int currentTab = -1;
 	/**
 	 * the fragmentManager
 	 */
@@ -206,7 +206,7 @@ public abstract class BaseTabActivity extends BaseActivity implements
 	 * @param id
 	 *            the current tab index
 	 */
-	public void setCurrentTab(int id) {
+	public  void setCurrentTab(int id) {
 		currentTab = id;
 		tabHost.setCurrentTab(currentTab);
 	}

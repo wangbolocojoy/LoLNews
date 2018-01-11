@@ -4,54 +4,29 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="theme_color">#FF69B4</color>
-    <color name="colorStepperButtonNormal">#cc482c</color>
-    <color name="colorStepperButtonPress">#92011d</color>
-    <color name="colorStepperContentBg">#f95b3a</color>
-    <color name="colorStepperText">#ffffff</color>
-    <color name="cl_snappingstepper_button_normal">#237bb6</color>
     <color name="cl_snappingstepper_button_press">#1f567b</color>
-    <color name="cl_snappingstepper_text_bg">#2b8ccd</color>
     <color name="cl_snappingstepper_text">#000000</color>
 
     <color name="theme_color_light">#FF84BFE2</color>
 
     <color name="transparent">#00000000</color>
-    <color name="yellow">#FFFFFF00</color>
     <color name="red">#FFFF0000</color>
     <color name="red1">#f14b6a</color>
     <color name="gray_e">#FFEEEEEE</color>
-    <color name="Beige">#F5F5DC</color>
-    <color name="Ivory">#FFFFF0</color>
-    <color name="Turquoise">#40E0D0</color>
-    <color name="Aqua">#00FFFF</color>
-    <color name="Aquamarine">#7FFFD4</color>
-    <color name="SkyBlue">#87CEEB</color>
-    <color name="BlueViolet">#8A2BE2</color>
-    <color name="MediumOrchid">#BA55D3</color>
     <color name="Violet">#EE82EE</color>
-    <color name="DeepPink">#FF1493</color>
     <color name="HotPink">#FF69B4</color>
-    <color name="LightPink">#FFB6C1</color>
     <!-- 白色无透明度 -->
     <color name="white">#FFFFFFFF</color>
     <!-- 白色10%透明度 -->
-    <color name="white_10">#1AFFFFFF</color>
     <!-- 白色20%透明度 -->
     <color name="white_20">#33FFFFFF</color>
     <!-- 白色30%透明度 -->
-    <color name="white_30">#4BFFFFFF</color>
     <!-- 白色40%透明度 -->
-    <color name="white_40">#66FFFFFF</color>
     <!-- 白色50%透明度 -->
-    <color name="white_50">#7FFFFFFF</color>
     <!-- 白色60%透明度 -->
-    <color name="white_60">#99FFFFFF</color>
     <!-- 白色70%透明度 -->
-    <color name="white_70">#AFFFFFFF</color>
     <!-- 白色85%透明度 -->
-    <color name="white_85">#D9FFFFFF</color>
     <!-- tabbar底层背景色-->
-    <color name="tabbarbackgroud">#FBFBFB</color>
     <!-- 黑色无透明度 -->
     <color name="black">#FF000000</color>
     <!-- 黑色3%透明度 -->
@@ -61,7 +36,6 @@
     <!-- 黑色20%透明度 -->
     <color name="black_20">#33000000</color>
     <!-- 黑色30%透明度 -->
-    <color name="black_30">#4B000000</color>
     <!-- 黑色40%透明度 -->
     <color name="black_40">#66000000</color>
     <!-- 黑色50%透明度 -->
@@ -69,7 +43,6 @@
     <!-- 黑色60%透明度 -->
     <color name="black_60">#99000000</color>
     <!-- 黑色70%透明度 -->
-    <color name="black_70">#AF000000</color>
     <!-- 黑色85%透明度 -->
     <color name="black_85">#D9000000</color>
 </resources>

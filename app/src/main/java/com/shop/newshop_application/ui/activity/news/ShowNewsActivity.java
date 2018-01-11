@@ -66,7 +66,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
         //缩放操作
         webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
         webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
-        webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件
+        webSettings.setDisplayZoomControls(true); //隐藏原生的缩放控件
         webView.setWebViewClient(new WebViewClient() {
 
             @Override

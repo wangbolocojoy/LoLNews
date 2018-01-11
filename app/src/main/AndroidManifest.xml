@@ -40,7 +40,8 @@
         <activity android:name=".ui.activity.news.ShowNewsActivity" />
         <activity android:name=".ui.activity.register.RegisterActivity" />
         <activity android:name=".ui.activity.register.LoginActivity" />
-        <activity android:name=".ui.activity.shoppingshow.ShopingDetailsActivity"></activity>
+        <activity android:name=".ui.activity.shoppingshow.ShopingDetailsActivity" />
+        <activity android:name=".ui.activity.SerchShopPingActivity"></activity>
     </application>
 
 </manifest>

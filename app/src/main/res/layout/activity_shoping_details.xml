@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.shop.newshop_application.ui.activity.shoppingshow.ShopingDetailsActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
+
         android:id="@+id/ll_title_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,10 +20,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="75dip"
             android:orientation="horizontal">
 
             <LinearLayout
+                android:layout_marginTop="15dp"
                 android:id="@+id/ll_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -34,6 +39,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="15dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -69,10 +75,16 @@
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
+
+
     </LinearLayout>
+
     <com.shop.newshop_application.views.NoScrollViewPager
-       android:id="@+id/shop_details_vpager"
+        android:id="@+id/shop_details_vpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.shop.newshop_application.views.NoScrollViewPager>
+        android:layout_height="match_parent"
+        ></com.shop.newshop_application.views.NoScrollViewPager>
+
 </LinearLayout>
+    <include layout="@layout/incloud_shopping_detaile_bottom"/>
+</RelativeLayout>
