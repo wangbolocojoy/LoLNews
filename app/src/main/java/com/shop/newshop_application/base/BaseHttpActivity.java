@@ -1,5 +1,6 @@
 package com.shop.newshop_application.base;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -147,6 +148,7 @@ public abstract class BaseHttpActivity extends BaseSimpleTitleActivity {
 	}
 
 	/** 将请求结果放在handle处理，callback可以更新ui **/
+	@SuppressLint("HandlerLeak")
 	protected Handler mHttpHandler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
