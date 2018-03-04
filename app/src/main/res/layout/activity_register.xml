@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shop.newshop_application.ui.activity.register.RegisterActivity">
+    tools:context="com.blog.news.ui.activity.register.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp"
                 android:src="@drawable/ic_phone" />
-            <com.shop.newshop_application.views.ClearEditText
+            <com.blog.news.views.ClearEditText
                 android:id="@+id/re_register_phone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,7 +54,7 @@
                 android:padding="5dp"
                 android:src="@drawable/ic_yanzheng" />
 
-            <com.shop.newshop_application.views.ClearEditText
+            <com.blog.news.views.ClearEditText
                 android:id="@+id/re_register_yzm"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
@@ -91,7 +91,7 @@
                 android:padding="9dp"
                 android:src="@drawable/ic_password" />
 
-            <com.shop.newshop_application.views.ClearEditText
+            <com.blog.news.views.ClearEditText
                 android:id="@+id/re_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

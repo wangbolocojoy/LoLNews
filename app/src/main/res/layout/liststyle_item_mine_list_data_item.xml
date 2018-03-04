@@ -96,11 +96,11 @@
                     android:padding="2dp"
                     android:orientation="horizontal">
 
-                    <com.shop.newshop_application.views.CustomTextview
+                    <com.blog.news.views.CustomTextview
                         android:id="@+id/main_shop_customtextview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                    </com.shop.newshop_application.views.CustomTextview>
+                    </com.blog.news.views.CustomTextview>
                 </LinearLayout>
             </LinearLayout>
 

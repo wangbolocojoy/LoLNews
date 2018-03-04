@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+style="@style/FitSystemWindows"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.blog.news.ui.activity.FristActivity">
+
+<ImageView
+    android:id="@+id/iv_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shop.newshop_application.ui.activity.FristActivity">
-    <ImageView
-        android:src="@drawable/ic_bank"
-        android:scaleType="fitXY"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    android:contentDescription=""
+    android:scaleType="fitXY"
+    android:src="@drawable/ic_back1"
+    tools:ignore="ContentDescription" />
 
+<View
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ban_shadow" />
+
+<TextView
+    android:id="@+id/splash_app_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="130dp"
+    android:text="@string/app_name"
+    android:textColor="@color/white"
+    android:textSize="40sp"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/splash_slogan"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/splash_app_name"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
+    android:text="欢迎"
+    android:textColor="@color/white"
+    android:textSize="15sp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="20dp"
+    android:background="@color/alpha_10_white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/splash_version_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/app_version"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/splash_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:lineSpacingExtra="2dp"
+        android:text="@string/splash_copyright"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+</LinearLayout>
 </RelativeLayout>

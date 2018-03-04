@@ -18,6 +18,10 @@
     <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
     </style>
-
+    <!--用于splash-->
+    <style name="FitSystemWindows">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
 
 </resources>

@@ -33,7 +33,7 @@
             android:padding="5dp"
             android:src="@drawable/ic_search" />
 
-        <com.shop.newshop_application.views.ClearEditText
+        <com.blog.news.views.ClearEditText
             android:id="@+id/incloud_search_tab_searchrows"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

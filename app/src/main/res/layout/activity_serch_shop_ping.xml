@@ -41,7 +41,7 @@
                 android:padding="5dp"
                 android:src="@drawable/ic_search" />
 
-            <com.shop.newshop_application.views.ClearEditText
+            <com.blog.news.views.ClearEditText
                 android:id="@+id/activity_search_tab_imputtext_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

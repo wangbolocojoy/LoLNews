@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50sp"
+    android:visibility="invisible"
+    android:id="@+id/incloud_shoppingcar_bottom_show"
     android:layout_alignParentBottom="true"
     android:background="@color/black_20"
     android:orientation="horizontal">
 
     <CheckBox
+        android:id="@+id/incloud_shoppingcar_bottom_scare_all_check"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
@@ -20,6 +23,7 @@
         android:textColor="@color/black" />
 
     <TextView
+        android:id="@+id/incloud_shoppingcar_bottom_scare_total"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -29,6 +33,7 @@
         android:textColor="@color/black" />
 
     <TextView
+        android:id="@+id/incloud_shoppingcar_bottom_settlement"
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"

@@ -10,6 +10,7 @@
         android:layout_height="40dp"
         android:src="@drawable/ic_default_image" />
     <TextView
+        android:gravity="center"
         android:id="@+id/home_dahang_item_naitem_name"
         android:layout_width="40dp"
         android:layout_height="12dp"

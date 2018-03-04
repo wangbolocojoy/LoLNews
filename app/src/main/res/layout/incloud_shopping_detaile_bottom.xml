@@ -9,6 +9,7 @@
     android:layout_width="0dp"
     android:orientation="vertical"
     android:gravity="center"
+    android:visibility="gone"
     android:layout_height="match_parent"
     android:layout_weight="1">
     <ImageView
@@ -23,6 +24,7 @@
         android:layout_weight="1"/>
 </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/shop_goto_collection"
         android:layout_width="0dp"
         android:orientation="vertical"
@@ -41,6 +43,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/shop_goto_Customer"
         android:layout_width="0dp"
         android:orientation="vertical"
@@ -59,6 +62,7 @@
             android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/shop_goto_shopcar"
         android:layout_width="0dp"
         android:orientation="vertical"

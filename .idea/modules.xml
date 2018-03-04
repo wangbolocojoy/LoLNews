@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ReViewLibrary/ReViewLibrary.iml" filepath="$PROJECT_DIR$/ReViewLibrary/ReViewLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ReViewLibrary/ReViewLibrary.iml" filepath="$PROJECT_DIR$/ReViewLibrary/ReViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShopingStore.iml" filepath="$PROJECT_DIR$/ShopingStore.iml" />
       <module fileurl="file://$PROJECT_DIR$/UILibrary/UILibrary.iml" filepath="$PROJECT_DIR$/UILibrary/UILibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

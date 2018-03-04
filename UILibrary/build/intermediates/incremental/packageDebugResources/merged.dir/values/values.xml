@@ -5,6 +5,7 @@
     <bool name="MAIL_SMTP_SSL_ENABLE">true</bool>
     <color name="HotPink">#FF69B4</color>
     <color name="Violet">#EE82EE</color>
+    <color name="alpha_10_white">#1AFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="black_10">#1A000000</color>
     <color name="black_20">#33000000</color>
@@ -13,7 +14,13 @@
     <color name="black_50">#7F000000</color>
     <color name="black_60">#99000000</color>
     <color name="black_85">#D9000000</color>
+    <color name="cheng">#FF7F00</color>
     <color name="gray_e">#FFEEEEEE</color>
+    <color name="hong">#FF0000</color>
+    <color name="huang">#FFFF00</color>
+    <color name="lan">#0000FF</color>
+    <color name="lv">#00FF00</color>
+    <color name="qing">#00FFFF</color>
     <color name="red">#FFFF0000</color>
     <color name="red1">#f14b6a</color>
     <color name="theme_color">#FF69B4</color>
@@ -21,6 +28,7 @@
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_20">#33FFFFFF</color>
+    <color name="zi">#8B00FF</color>
     <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/></declare-styleable>
     <declare-styleable name="CustomSeekBarSection"><attr format="dimension" name="progress_height"/><attr format="dimension" name="progress_corner"/><attr format="dimension" name="section_radius"/><attr format="boolean" name="section_enable"/><attr format="dimension" name="thumb_radius"/><attr format="reference" name="thumb_point"/><attr format="color" name="background_color"/><attr format="color" name="progress_color"/><attr format="integer" name="min_value"/><attr format="integer" name="max_value"/><attr format="boolean" name="overspread_enable"/></declare-styleable>
     <declare-styleable name="PercentLayout_Layout"><attr format="string" name="layout_widthPercent"/><attr format="string" name="layout_heightPercent"/><attr format="string" name="layout_marginPercent"/><attr format="string" name="layout_marginLeftPercent"/><attr format="string" name="layout_marginTopPercent"/><attr format="string" name="layout_marginRightPercent"/><attr format="string" name="layout_marginBottomPercent"/><attr format="string" name="layout_marginStartPercent"/><attr format="string" name="layout_marginEndPercent"/><attr format="string" name="layout_textSizePercent"/><attr format="string" name="layout_maxWidthPercent"/><attr format="string" name="layout_maxHeightPercent"/><attr format="string" name="layout_minWidthPercent"/><attr format="string" name="layout_minHeightPercent"/><attr format="string" name="layout_paddingPercent"/><attr format="string" name="layout_paddingTopPercent"/><attr format="string" name="layout_paddingBottomPercent"/><attr format="string" name="layout_paddingLeftPercent"/><attr format="string" name="layout_paddingRightPercent"/></declare-styleable>

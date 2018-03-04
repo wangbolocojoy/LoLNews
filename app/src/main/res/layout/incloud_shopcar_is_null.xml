@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <com.rhino.ui.widget.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/black_20"
+            android:src="@drawable/ic_shopping_cart_white_24dp"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你的购物车还是空的"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去挑一些中意的商品吧"
+            />
+        <TextView
+            android:id="@+id/tab_shoppingcar_to_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/black_60"
+            android:textStyle="bold"
+            android:background="@drawable/shape_rect_custom_dialog_bg"
+            android:text="随便逛逛"/>
+
+
+</LinearLayout>

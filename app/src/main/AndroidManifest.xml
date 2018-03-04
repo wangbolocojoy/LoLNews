@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shop.newshop_application">
+    package="com.blog.news">
 
     <!-- 访问网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,14 +20,14 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".application.MyApplication"
+        android:name="com.blog.news.application.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_zszx_logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_zszx_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.FristActivity">
+        <activity android:name="com.blog.news.ui.activity.FristActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,13 +35,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.MainTabActivicty"
+            android:name="com.blog.news.ui.activity.MainTabActivicty"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.news.ShowNewsActivity" />
-        <activity android:name=".ui.activity.register.RegisterActivity" />
-        <activity android:name=".ui.activity.register.LoginActivity" />
-        <activity android:name=".ui.activity.shoppingshow.ShopingDetailsActivity" />
-        <activity android:name=".ui.activity.SerchShopPingActivity"></activity>
+        <activity android:name="com.blog.news.ui.activity.news.ShowNewsActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="com.blog.news.ui.activity.register.RegisterActivity" />
+        <activity android:name="com.blog.news.ui.activity.register.LoginActivity" />
+        <activity android:name="com.blog.news.ui.activity.shoppingshow.ShopingDetailsActivity" />
+        <activity android:name="com.blog.news.ui.activity.SerchShopPingActivity" />
+        <activity android:name="com.blog.news.ui.activity.douyin.DouYinPlayerActivity"></activity>
     </application>
 
 </manifest>

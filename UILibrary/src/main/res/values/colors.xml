@@ -10,10 +10,18 @@
 	<color name="gray_e">#FFEEEEEE</color>
     <color name="Violet">#EE82EE</color>
     <color name="HotPink">#FF69B4</color>
+    <color name="hong">#FF0000</color>
+    <color name="cheng">#FF7F00</color>
+    <color name="huang">#FFFF00</color>
+    <color name="lv">#00FF00</color>
+    <color name="qing">#00FFFF</color>
+    <color name="lan">#0000FF</color>
+    <color name="zi">#8B00FF</color>
 
 
     <!-- 白色无透明度 -->
     <color name="white">#FFFFFFFF</color>
+    <color name="alpha_10_white">#1AFFFFFF</color>
     <!-- 白色10%透明度 -->
     <!-- 白色20%透明度 -->
     <color name="white_20">#33FFFFFF</color>

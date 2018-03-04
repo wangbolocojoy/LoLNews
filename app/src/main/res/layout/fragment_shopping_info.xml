@@ -10,7 +10,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.shop.newshop_application.views.SlideDetailsLayout
+        <com.blog.news.views.SlideDetailsLayout
             android:id="@+id/sv_switch"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -366,7 +366,7 @@
             </ScrollView>
 
             <include layout="@layout/incloud_shopping_detail_item_tab" />
-        </com.shop.newshop_application.views.SlideDetailsLayout>
+        </com.blog.news.views.SlideDetailsLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_up_slide"

@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shop.newshop_application.ui.activity.news.ShowNewsActivity">
-<WebView
-    android:id="@+id/news_webview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></WebView>
-</LinearLayout>
+    tools:context="com.blog.news.ui.activity.news.ShowNewsActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            >
+
+            <com.tencent.smtt.sdk.WebView
+                android:id="@+id/news_webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <master.flame.danmaku.ui.widget.DanmakuView
+                android:id="@+id/danmuview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+        <include layout="@layout/incloud_blog_webnews_commentview" />
+            </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

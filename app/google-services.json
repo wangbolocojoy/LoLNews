@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "312986184898",
+    "firebase_url": "https://danmunews.firebaseio.com",
+    "project_id": "danmunews",
+    "storage_bucket": "danmunews.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312986184898:android:f9c501c8f76002e5",
+        "android_client_info": {
+          "package_name": "com.blog.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312986184898-jm15kdrnr2dpume8gga7hurb2rbbvq3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF4SPuYibc8-SvO-IybVvGMgpuXhvrUyw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
