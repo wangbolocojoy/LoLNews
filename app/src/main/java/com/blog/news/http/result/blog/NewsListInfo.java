@@ -189,7 +189,6 @@ public class NewsListInfo implements Serializable {
         private String status;
         private String title;
         private String title_plain;
-        private String content;
         private String excerpt;
         private String date;
         private String modified;
@@ -210,7 +209,6 @@ public class NewsListInfo implements Serializable {
                     ", status='" + status + '\'' +
                     ", title='" + title + '\'' +
                     ", title_plain='" + title_plain + '\'' +
-                    ", content='" + content + '\'' +
                     ", excerpt='" + excerpt + '\'' +
                     ", date='" + date + '\'' +
                     ", modified='" + modified + '\'' +
@@ -277,14 +275,6 @@ public class NewsListInfo implements Serializable {
 
         public void setTitle_plain(String title_plain) {
             this.title_plain = title_plain;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
         }
 
         public String getExcerpt() {

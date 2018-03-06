@@ -4,33 +4,35 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.blog.news.R;
-import com.blog.news.application.MyApplication;
 import com.blog.news.base.BaseHttpActivity;
+import com.blog.news.constant.UrlConstant;
+import com.blog.news.http.request.blog.NewsRequest;
+import com.blog.news.http.result.blog.NewsInfo;
 import com.blog.news.http.result.blog.NewsListInfo;
-import com.blog.news.utils.AndroidBug5497Workaround;
-import com.blog.news.utils.ThreadManager;
-import com.blog.news.views.item.FunSwitch;
+import com.blog.news.utils.helper.GsonUtil;
 import com.rhino.ui.utils.Log;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
-import java.io.Serializable;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,30 +52,28 @@ public class ShowNewsActivity extends BaseHttpActivity {
     WebView webView;
     @BindView(R.id.danmuview)
     DanmakuView mDanmakuView;
-    @BindView(R.id.check_comment)
-    FunSwitch checkComment;
-    @BindView(R.id.edtext)
-    EditText edtext;
-    @BindView(R.id.send_comment)
-    Button sendComment;
+    @BindView(R.id.checkdanmu)
+    ImageView checkdanmu;
+    @BindView(R.id.danmutext)
+    EditText danmutext;
+    @BindView(R.id.senddanmu)
+    ImageView senddanmu;
+    private boolean isShowDanmu = true;
     private DanmakuContext mDanmakuContext;
     private HashMap<Integer, Integer> maxLinesPair;// 弹幕最大行数
     private HashMap<Integer, Boolean> overlappingEnablePair;// 设置是否重叠
     public static boolean isShow = true;
     private WebSettings webSettings;
-    public final static String URL = "url";
+    public final static String NewsID = "id";
     public final static String TITLE = "title";
-    public final static String COMMENT = "comment";
     List<NewsListInfo.PostsBean.CommentsBean> commentsBeans;
     public final static String headers = "<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"><style>\n" +
-            "img { width : 100% }</style> <body><script src=\"https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js\"></script></head>";
+            "img{ max-width : 100%!important;height:auto;margin:0 auto;}</style> <body><script src=\"https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js\"></script></head>";
     public final static String footer = "</body><html>";
     private int colordata[] = {R.color.hong, R.color.cheng, R.color.huang, R.color.lv, R.color.qing
             , R.color.lan, R.color.zi, R.color.Violet, R.color.red1};
-    //    private List<String> comments;
-    private String conent;
     public String comments;
-    private static BaseDanmakuParser mParser = new BaseDanmakuParser() {
+    BaseDanmakuParser mParser = new BaseDanmakuParser() {
         @Override
         protected IDanmakus parse() {
             return new Danmakus();
@@ -83,7 +83,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
     @Override
     protected void setContent() {
         setContentView(R.layout.activity_show_news);
-        AndroidBug5497Workaround.assistActivity(this);
+//        AndroidBug5497Workaround.assistActivity(this);
 //        Slidr.attach(this);
     }
 
@@ -95,7 +95,6 @@ public class ShowNewsActivity extends BaseHttpActivity {
     @Override
     protected boolean initData() {
         commentsBeans = new ArrayList<>();
-         conent = getIntent().getStringExtra(URL);
         return true;
     }
 
@@ -104,12 +103,13 @@ public class ShowNewsActivity extends BaseHttpActivity {
      */
     @Override
     protected void initView() {
-        inButterKnifeView();
         setTitle(getIntent().getStringExtra(TITLE));
-        mDanmakuContext = DanmakuContext.create();
+        inButterKnifeView();
+
+
         initDanmaku();
 //        webView.loadUrl(getIntent().getStringExtra(URL));
-        webView.getSettings().setDefaultTextEncodingName("UTF-8");
+//        webView.getSettings().setDefaultTextEncodingName("utf-8");
         webSettings = webView.getSettings();
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
         webSettings.setJavaScriptEnabled(true);
@@ -117,48 +117,54 @@ public class ShowNewsActivity extends BaseHttpActivity {
         webSettings.setUseWideViewPort(true); //将图片调整到适合webview的大小
         webSettings.setLoadWithOverviewMode(true); // 缩放至屏幕的大小
         //缩放操作
-        webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
-        webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
-        webSettings.setDisplayZoomControls(true); //隐藏原生的缩放控件
+//        webSettings.setSupportZoom(false); //支持缩放，默认为true。是下面那个的前提。
+//        webSettings.setBuiltInZoomControls(false); //设置内置的缩放控件。若为false，则该WebView不可缩放
+//        webSettings.setDisplayZoomControls(true); //隐藏原生的缩放控件
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView webView, String s) {
-                return super.shouldOverrideUrlLoading(webView, s);
+                Log.d("shouldOverrideUrlLoading" + s);
+                webView.loadDataWithBaseURL(null, null, "text/html", "utf-8", null);
+                return true;
             }
         });
-        initwebinfo();
+        initwebdata();
     }
 
-    public void initwebinfo(){
-        commentsBeans = (List<NewsListInfo.PostsBean.CommentsBean>) getIntent().getSerializableExtra(COMMENT);
+    private void initwebdata() {
+        if (checkNetWork()) {
+            doPost(UrlConstant.CHECK_NEWS_INFO, new NewsRequest(getIntent().getIntExtra(NewsID, 2)));
+        }
+    }
 
-       ThreadManager.getManager().post(ThreadManager.THREAD_BACKGROUND,new Runnable() {
-            @SuppressLint("NewApi")
-            @Override
-            public void run() {
+    @Override
+    protected void CallbackHandler(int event, String url, String data, Object reqData) {
+        super.CallbackHandler(event, url, data, reqData);
+        switch (url) {
+            case UrlConstant.CHECK_NEWS_INFO:
+                GetNewsInfo(event, data);
+                break;
+            default:
+                break;
+        }
+    }
 
-                commentHtml(commentsBeans);
-                for (int i = 0; i < commentsBeans.size(); i++) {
-                    addDanmaku(false, commentsBeans.get(i).getContent());
-                }
-                Log.d("111111");
-                comments = "<p ><h3>评论：</h3></p><hr  id = \"commentAnchor\">" + commentHtml(commentsBeans);
-                Log.d("222222");
-                try {
-                    Thread.sleep(2222);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                {
+    @SuppressLint("NewApi")
+    private void GetNewsInfo(int event, String data) {
+        if (!isHttpRequestSuccess(event)) {
+            showAlert("获取新闻详情失败");
+        } else {
+            NewsInfo newsInfo = GsonUtil.GsonToBean(data, NewsInfo.class);
+            if (null != newsInfo) {
+                comments = commentHtml(newsInfo.getPost().getComments());
+                String a = headers + getNewContent(newsInfo.getPost().getContent()) + comments + footer;
+                webView.loadDataWithBaseURL(null, a, "text/html", "utf-8", null);
+                a = null;
 
-                }
             }
-
-        });
-       Log.d("33333");
-        webView.loadDataWithBaseURL(null, headers + conent + comments + footer, "text/html", "UTF-8", null);
-
+        }
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
@@ -168,25 +174,27 @@ public class ShowNewsActivity extends BaseHttpActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public static void runActivity(Context context, String url, String title, List<NewsListInfo.PostsBean.CommentsBean> commentsBeans) {
+    public static void runActivity(Context context, int id, String titile) {
         Intent intent = new Intent(context, ShowNewsActivity.class);
-        intent.putExtra(URL, url);
-        intent.putExtra(TITLE, title);
-        intent.putExtra(COMMENT, (Serializable) commentsBeans);
+        intent.putExtra(NewsID, id);
+        intent.putExtra(TITLE, titile);
         context.startActivity(intent);
     }
 
-    public String commentHtml(List<NewsListInfo.PostsBean.CommentsBean> commentsBeans) {
+    @SuppressLint("NewApi")
+    public String commentHtml(List<NewsInfo.PostBean.CommentsBean> commentsBeans) {
         String result = "";
         for (int i = 0; i < commentsBeans.size(); i++) {
             String a = "<p> <h6>" + (commentsBeans.get(i).getName()) + "</h6> <h5>" + (commentsBeans.get(i).getContent()) + "</h5><hr size=1></p>";
             result = result + a;
+            addDanmaku(false,commentsBeans.get(i).getContent());
+
         }
         return result;
     }
 
     private void initDanmaku() {
-
+        mDanmakuContext = DanmakuContext.create();
         // 设置最大行数,从右向左滚动(有其它方向可选)
         maxLinesPair = new HashMap<>();
         maxLinesPair.put(BaseDanmaku.TYPE_SCROLL_RL, 5);
@@ -230,46 +238,45 @@ public class ShowNewsActivity extends BaseHttpActivity {
             });
         }
         mDanmakuView.prepare(mParser, mDanmakuContext);
-        mDanmakuView.showFPS(true); //是否显示FPS
+        if (mParser == null) {
+            Log.d("mparser=null");
+        }
+        if (mDanmakuContext == null) {
+            Log.d(mDanmakuContext + "mDanmakuContext");
+        }
+        mDanmakuView.showFPS(false); //是否显示FPS
         mDanmakuView.enableDanmakuDrawingCache(true);
     }
-    private void test(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        }).start();
-    }
 
     /**
-     * 添加文本弹幕
+     * 添加文本弹幕list
      *
      * @param islive  //是否是直播弹幕
      * @param comment //弹幕
      */
-    @RequiresApi(api = Build.VERSION_CODES.M)
+    @SuppressLint("NewApi")
     public void addDanmaku(boolean islive, String comment) {
 
         BaseDanmaku danmaku = mDanmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         if (danmaku == null || mDanmakuView == null) {
-            Log.d("danmaku" + danmaku+"mDanmakuView"+mDanmakuView);
+            Log.d("danmaku" + danmaku + "mDanmakuView" + mDanmakuView);
 //            Log.d("mDanmakuView"+mDanmakuView);
             return;
         }
-        Log.d("弹幕conent" + comment);
+        Log.d("弹幕" + comment);
         danmaku.text = comment;
         danmaku.padding = 5;
-//        danmaku.priority = 0;  //0 表示可能会被各种过滤器过滤并隐藏显示 //1 表示一定会显示, 一般用于本机发送的弹幕
-//        danmaku.isLive = islive;
-//        danmaku.timeOffset = mDanmakuView.getCurrentTime() + 2000; //显示时间
-        danmaku.textSize = sp2px((int)(Math.random()*(40-20+1)+20));
+        danmaku.textSize = sp2px((int) (Math.random() * (40 - 20 + 1) + 20));
         danmaku.textColor = getColor(colordata[new Random().nextInt(colordata.length)]);
         danmaku.textShadowColor = Color.WHITE; //阴影/描边颜色
-        danmaku.borderColor = 0; //边框颜色，0表示无边框
-        mDanmakuView.addDanmaku(danmaku);
+        if (islive) {
+            danmaku.borderColor = danmaku.textColor;
+        }
 
+        mDanmakuView.addDanmaku(danmaku);
     }
+
     /**
      * sp转px的方法。
      */
@@ -277,8 +284,10 @@ public class ShowNewsActivity extends BaseHttpActivity {
         final float fontScale = getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
+
     @Override
     protected void onPause() {
+        Log.d("onPause");
         super.onPause();
         if (mDanmakuView != null && mDanmakuView.isPrepared()) {
             mDanmakuView.pause();
@@ -287,6 +296,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
 
     @Override
     protected void onResume() {
+        Log.d("onResume");
         super.onResume();
         if (mDanmakuView != null && mDanmakuView.isPrepared() && mDanmakuView.isPaused()) {
             mDanmakuView.resume();
@@ -295,15 +305,30 @@ public class ShowNewsActivity extends BaseHttpActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        Log.d("onDestroy");
+        if (mParser != null) {
+            mParser = null;
+        }
+        if (webView != null) {
+            webView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            webView.clearHistory();
+            ((ViewGroup) webView.getParent()).removeView(webView);
+            webView.destroy();
+            webView = null;
+
+        }
         if (mDanmakuView != null) {
             // dont forget release!
             mDanmakuView.release();
             mDanmakuView = null;
         }
+        super.onDestroy();
+
     }
+
     @Override
     public void onBackPressed() {
+        Log.d("onBackPressed");
         super.onBackPressed();
         if (mDanmakuView != null) {
             // dont forget release!
@@ -311,16 +336,48 @@ public class ShowNewsActivity extends BaseHttpActivity {
             mDanmakuView = null;
         }
     }
-    @SuppressLint("NewApi")
-    @OnClick({R.id.send_comment})
+
+
+
+    /**
+     * 将html文本内容中包含img标签的图片，宽度变为屏幕宽度，高度根据宽度比例自适应
+     **/
+    public static String getNewContent(String htmltext) {
+        try {
+            Document doc = Jsoup.parse(htmltext);
+            Elements elements = doc.getElementsByTag("img/gif");
+            for (Element element : elements) {
+                element.attr("width", "100%").attr("height", "auto");
+            }
+
+            return doc.toString();
+        } catch (Exception e) {
+            return htmltext;
+        }
+    }
+
+
+
+    @OnClick({R.id.checkdanmu, R.id.senddanmu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.send_comment:
-                if (!TextUtils.isEmpty(edtext.getText())){
-                    addDanmaku(false,edtext.getText().toString());
-                    edtext.setText("");
+            case R.id.checkdanmu:
+                if (isShowDanmu) {
+                    checkdanmu.setImageResource(R.drawable.danmuon);
+                    mDanmakuView.show();
+                } else {
+                    checkdanmu.setImageResource(R.drawable.danmuoff);
+                    mDanmakuView.hide();
+                }
+                isShowDanmu = !isShowDanmu;
+                break;
+            case R.id.senddanmu:
+                if (!TextUtils.isEmpty(danmutext.getText().toString())) {
+                    Log.d(danmutext.getText().toString());
+                    addDanmaku(true, danmutext.getText().toString());
+                    danmutext.setText("");
 
-                }else {
+                } else {
                     showAlert("不能发送空的弹幕");
                 }
                 break;

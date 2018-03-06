@@ -53,8 +53,14 @@ public class UrlConstant {
      */
     public static final String NEWS_TYPE=BLOGAPI+"get_category_index/";
     /**
-     * 获取blog新闻类型
+     * 获取blog新闻列表
      * {@link NewsRequest}
      */
     public static final String NEWS_TITELLIST=BLOGAPI+"get_category_posts/";
+
+    /**
+     * 获取新闻详情
+     * {@link com.blog.news.http.result.blog.NewsInfo}
+     */
+    public static final String CHECK_NEWS_INFO=BLOGAPI+"get_post/";
 }

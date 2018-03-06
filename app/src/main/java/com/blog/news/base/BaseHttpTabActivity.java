@@ -121,12 +121,18 @@ public abstract class BaseHttpTabActivity extends BaseTabActivity {
 	 * 检查网络状态
 	 * @return true 网络正常
 	 */
+	/**
+	 * 检查网络状态
+	 * @return true 网络正常
+	 */
 	protected boolean checkNetWork(){
-		if (NetworkUtils.isConnected()&&NetworkUtils.isAvailableByPing()) {
-			showAlert("网络不可用");
-			return false;
+		if (NetworkUtils.isConnected()) {
+			Log.d("网络可用");
+			return true;
 		}
-		return true;
+		showAlert("网络不可用");
+		Log.d("网络不可用");
+		return false;
 	}
 
 	/**

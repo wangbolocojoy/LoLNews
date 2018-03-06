@@ -25,10 +25,13 @@ import com.blog.news.utils.GlideImageLoader;
 import com.blog.news.utils.MyUtils;
 import com.blog.news.utils.helper.Config;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.smtt.sdk.QbSdk;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 
@@ -71,6 +74,7 @@ public class MyApplication extends MultiDexApplication {
             // You should not init your app in this process.
             return;
         }
+        inintTXX5Web();
         LeakCanary.install(this);
         // Normal app init code...
         NineGridView.setImageLoader(new GlideImageLoader());
@@ -133,12 +137,16 @@ public class MyApplication extends MultiDexApplication {
      * @param context 上下文
      */
     private void initDebug(Context context) {
+
+
         boolean debugVersion = MyUtils.isApkDebugVersion(context);
         boolean debug = Config.getInstance().isDebugMode();
         if(debug){
+            Log.d("DEBUG版本");
             LogUtils.getConfig().setLogSwitch(true);
             Log.getInstance().init(context, true, true);
         }else{
+            Log.d("正式版");
             LogUtils.getConfig().setLogSwitch(false);
             Log.getInstance().init(context, debugVersion, false);
         }
@@ -147,6 +155,7 @@ public class MyApplication extends MultiDexApplication {
      * 初始话崩溃处理器，输出崩溃日志文件到手机内存，方便手机上查看
      */
     private void initCrashHandler() {
+        Log.d("初始化崩溃日志记录");
         String dirPath;
         if (FileUtils.hasSdcard()) {
             dirPath = Environment.getExternalStorageDirectory().getPath()
@@ -156,6 +165,25 @@ public class MyApplication extends MultiDexApplication {
         }
         CrashHandler.getInstance().init(getApplicationContext(), dirPath,
                 "debug.txt", !MyUtils.isApkDebugVersion(getContext()));
+    }
+
+    private  void inintTXX5Web(){
+        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+
+            @Override
+            public void onViewInitFinished(boolean b) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Log.d( " 初始化X5内核onViewInitFinished is " + b);
+            }
+
+            @Override
+            public void onCoreInitFinished() {
+                // TODO Auto-generated method stub
+            }
+        };
+
+//x5内核初始化接口
+        QbSdk.initX5Environment(getApplicationContext(), cb);
     }
 
 

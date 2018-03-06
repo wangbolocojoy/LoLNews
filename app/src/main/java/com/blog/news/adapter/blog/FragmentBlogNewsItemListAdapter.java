@@ -34,7 +34,7 @@ public class FragmentBlogNewsItemListAdapter extends BaseQuickAdapter<NewsListIn
             public void onClick(View v) {
 //                Bundle bundle=new Bundle();
 //                bundle.putSerializable("aa",item);
-                ShowNewsActivity.runActivity(mContext, item.getContent(),item.getTitle(),item.getComments());
+                ShowNewsActivity.runActivity(mContext,item.getId(),item.getTitle());
             }
         });
     }
