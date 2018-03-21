@@ -8,7 +8,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.blog.news.R;
-import com.blog.news.glide.GlideApp;
 import com.blog.news.http.result.tabshopitem.TabShopNewsListInfo;
 import com.blog.news.ui.activity.news.ShowNewsActivity;
 
@@ -29,9 +28,9 @@ public class FragmentShopItemListAdapter extends BaseQuickAdapter<TabShopNewsLis
 
     @Override
     protected void convert(BaseViewHolder helper, final TabShopNewsListInfo.ListBean item) {
-        helper.setText(R.id.tab_shop_new_list_item_titel, item.getTitle());
-        helper.setText(R.id.tab_shop_new_list_item_user, item.getAuthor());
-        GlideApp.with(mContext).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).load(item.getImage_url_small()).skipMemoryCache(true).into((ImageView) helper.getView(R.id.tab_shop_new_list_item_img));
+//        helper.setText(R.id.tab_shop_new_list_item_titel, item.getTitle());
+//        helper.setText(R.id.tab_shop_new_list_item_user, item.getAuthor());
+//        GlideApp.with(mContext).asBitmap().diskCacheStrategy(DiskCacheStrategy.NONE).load(item.getImage_url_small()).skipMemoryCache(true).into((ImageView) helper.getView(R.id.tab_shop_new_list_item_img));
         helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

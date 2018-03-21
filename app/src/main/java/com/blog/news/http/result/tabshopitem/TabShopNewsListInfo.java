@@ -16,6 +16,15 @@ public class TabShopNewsListInfo implements Serializable {
     private String nextpage;
     private List<ListBean> list;
 
+    @Override
+    public String toString() {
+        return "TabShopNewsListInfo{" +
+                "next='" + next + '\'' +
+                ", nextpage='" + nextpage + '\'' +
+                ", list=" + list +
+                '}';
+    }
+
     public String getNext() {
         return next;
     }
@@ -41,6 +50,49 @@ public class TabShopNewsListInfo implements Serializable {
     }
 
     public static class ListBean {
+        @Override
+        public String toString() {
+            return "ListBean{" +
+                    "article_id='" + article_id + '\'' +
+                    ", content_id='" + content_id + '\'' +
+                    ", newstype='" + newstype + '\'' +
+                    ", newstypeid='" + newstypeid + '\'' +
+                    ", channel_desc='" + channel_desc + '\'' +
+                    ", channel_id='" + channel_id + '\'' +
+                    ", insert_date='" + insert_date + '\'' +
+                    ", title='" + title + '\'' +
+                    ", article_url='" + article_url + '\'' +
+                    ", summary='" + summary + '\'' +
+                    ", score='" + score + '\'' +
+                    ", publication_date='" + publication_date + '\'' +
+                    ", targetid='" + targetid + '\'' +
+                    ", intent='" + intent + '\'' +
+                    ", is_act='" + is_act + '\'' +
+                    ", is_hot='" + is_hot + '\'' +
+                    ", is_subject='" + is_subject + '\'' +
+                    ", is_new='" + is_new + '\'' +
+                    ", is_top='" + is_top + '\'' +
+                    ", image_with_btn='" + image_with_btn + '\'' +
+                    ", image_spec='" + image_spec + '\'' +
+                    ", is_report='" + is_report + '\'' +
+                    ", is_direct='" + is_direct + '\'' +
+                    ", image_url_small='" + image_url_small + '\'' +
+                    ", image_url_big='" + image_url_big + '\'' +
+                    ", image_url_bigop='" + image_url_bigop + '\'' +
+                    ", image_url_act='" + image_url_act + '\'' +
+                    ", pv='" + pv + '\'' +
+                    ", bmatchid='" + bmatchid + '\'' +
+                    ", v_len='" + v_len + '\'' +
+                    ", pics_id='" + pics_id + '\'' +
+                    ", is_purchase='" + is_purchase + '\'' +
+                    ", commentid='" + commentid + '\'' +
+                    ", actnews_enddate='" + actnews_enddate + '\'' +
+                    ", actnews_reward='" + actnews_reward + '\'' +
+                    ", doc_id='" + doc_id + '\'' +
+                    ", author='" + author + '\'' +
+                    '}';
+        }
+
         /**
          * article_id : 41162
          * content_id : 41162

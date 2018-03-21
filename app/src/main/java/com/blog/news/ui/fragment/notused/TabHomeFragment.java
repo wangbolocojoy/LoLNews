@@ -1,4 +1,4 @@
-package com.blog.news.ui.fragment;
+package com.blog.news.ui.fragment.notused;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;

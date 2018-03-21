@@ -1,4 +1,4 @@
-package com.blog.news.ui.fragment;
+package com.blog.news.ui.fragment.notused;
 
 import android.view.View;
 import android.widget.LinearLayout;

@@ -15,13 +15,14 @@
     <color name="black_60">#99000000</color>
     <color name="black_85">#D9000000</color>
     <color name="cheng">#FF7F00</color>
+    <color name="colorAccent">#ff69b4</color>
     <color name="gray_e">#FFEEEEEE</color>
     <color name="hong">#FF0000</color>
     <color name="huang">#FFFF00</color>
     <color name="lan">#0000FF</color>
     <color name="lv">#00FF00</color>
     <color name="qing">#00FFFF</color>
-    <color name="red">#FFFF0000</color>
+    <color name="red">#FF69B4</color>
     <color name="red1">#f14b6a</color>
     <color name="theme_color">#FF69B4</color>
     <color name="theme_color_light">#FF84BFE2</color>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>GooglePlayPolygon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Polygon-Copy" fill="#FF1744" points="50 5 81.8198052 18.1801948 95 50 81.8198052 81.8198052 50 95 18.1801948 81.8198052 5 50 18.1801948 18.1801948"></polygon>
+        <path d="M50,1.0823922 L15.4100278,15.4100278 L1.0823922,50 L15.4100278,84.5899722 L50,98.9176078 L84.5899722,84.5899722 L98.9176078,50 L84.5899722,15.4100278 L50,1.0823922 Z" id="Polygon" stroke="#FF1744" stroke-width="2"></path>
+        <g id="GooglePlayPolygon"></g>
+    </g>
+</svg>

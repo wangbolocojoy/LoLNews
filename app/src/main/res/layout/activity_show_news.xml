@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.blog.news.ui.activity.news.ShowNewsActivity">
 
-    <LinearLayout
-        android:id="@+id/danmuedview"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/black_3"
-        android:orientation="horizontal"
-        android:padding="6dp">
+
+
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/news_webview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.tencent.smtt.sdk.WebView>
+
+    <master.flame.danmaku.ui.widget.DanmakuView
+        android:id="@+id/danmuview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/checkdanmu"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:id="@+id/senddanmu"
+            android:padding="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:saveEnabled="true"
-            android:src="@drawable/danmuon" />
+            android:src="@drawable/send"
+            app:layout_constraintBottom_toTopOf="@+id/checkdanmu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <android.support.v7.widget.CardView
             android:layout_width="0dp"
@@ -29,37 +57,39 @@
             android:layout_weight="8"
             android:background="@color/white"
             android:orientation="horizontal"
-            app:cardCornerRadius="15dp">
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/senddanmu"
+            app:layout_constraintStart_toEndOf="@+id/checkdanmu"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/danmutext"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null" />
+                android:padding="5dp">
+
+                <EditText
+                    android:id="@+id/danmutext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null" />
+            </android.support.constraint.ConstraintLayout>
+
         </android.support.v7.widget.CardView>
 
         <ImageView
-            android:id="@+id/senddanmu"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:padding="5dp"
-            android:paddingLeft="5dp"
-            android:src="@drawable/send" />
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/danmuedview"
-        >
-        <com.tencent.smtt.sdk.WebView
-            android:id="@+id/news_webview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:id="@+id/checkdanmu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        <master.flame.danmaku.ui.widget.DanmakuView
-            android:id="@+id/danmuview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-</RelativeLayout>
+            android:layout_weight="1.5"
+            android:saveEnabled="true"
+            android:src="@drawable/danmuon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -16,9 +16,11 @@ import com.blog.news.R;
 import com.blog.news.base.BaseHttpActivity;
 import com.blog.news.constant.UrlConstant;
 import com.blog.news.http.request.blog.NewsRequest;
+import com.blog.news.http.result.blog.Comment;
 import com.blog.news.http.result.blog.NewsInfo;
 import com.blog.news.http.result.blog.NewsListInfo;
 import com.blog.news.utils.helper.GsonUtil;
+import com.blog.news.utils.helper.InputMethodManagerUtils;
 import com.rhino.ui.utils.Log;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -47,6 +49,8 @@ import master.flame.danmaku.danmaku.model.android.Danmakus;
 import master.flame.danmaku.danmaku.parser.BaseDanmakuParser;
 import master.flame.danmaku.ui.widget.DanmakuView;
 
+import static com.blog.news.ui.activity.shoppingshow.ShopingDetailsActivity.URL;
+
 public class ShowNewsActivity extends BaseHttpActivity {
     @BindView(R.id.news_webview)
     WebView webView;
@@ -66,6 +70,8 @@ public class ShowNewsActivity extends BaseHttpActivity {
     private WebSettings webSettings;
     public final static String NewsID = "id";
     public final static String TITLE = "title";
+    public final static String URl="url";
+    private int postid;
     List<NewsListInfo.PostsBean.CommentsBean> commentsBeans;
     public final static String headers = "<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"><style>\n" +
             "img{ max-width : 100%!important;height:auto;margin:0 auto;}</style> <body><script src=\"https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js\"></script></head>";
@@ -73,7 +79,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
     private int colordata[] = {R.color.hong, R.color.cheng, R.color.huang, R.color.lv, R.color.qing
             , R.color.lan, R.color.zi, R.color.Violet, R.color.red1};
     public String comments;
-    BaseDanmakuParser mParser = new BaseDanmakuParser() {
+    private   BaseDanmakuParser  mParser = new BaseDanmakuParser() {
         @Override
         protected IDanmakus parse() {
             return new Danmakus();
@@ -95,6 +101,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
     @Override
     protected boolean initData() {
         commentsBeans = new ArrayList<>();
+
         return true;
     }
 
@@ -103,32 +110,21 @@ public class ShowNewsActivity extends BaseHttpActivity {
      */
     @Override
     protected void initView() {
-        setTitle(getIntent().getStringExtra(TITLE));
         inButterKnifeView();
-
-
+        setTitle(getIntent().getStringExtra(TITLE));
         initDanmaku();
-//        webView.loadUrl(getIntent().getStringExtra(URL));
-//        webView.getSettings().setDefaultTextEncodingName("utf-8");
         webSettings = webView.getSettings();
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
         webSettings.setJavaScriptEnabled(true);
         //设置自适应屏幕，两者合用
         webSettings.setUseWideViewPort(true); //将图片调整到适合webview的大小
         webSettings.setLoadWithOverviewMode(true); // 缩放至屏幕的大小
-        //缩放操作
-//        webSettings.setSupportZoom(false); //支持缩放，默认为true。是下面那个的前提。
-//        webSettings.setBuiltInZoomControls(false); //设置内置的缩放控件。若为false，则该WebView不可缩放
-//        webSettings.setDisplayZoomControls(true); //隐藏原生的缩放控件
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView webView, String s) {
-                Log.d("shouldOverrideUrlLoading" + s);
-                webView.loadDataWithBaseURL(null, null, "text/html", "utf-8", null);
-                return true;
-            }
-        });
-        initwebdata();
+        if (null!=getIntent().getStringExtra(URl)){
+            webView.loadUrl(getIntent().getStringExtra(URl));
+        }else {
+            initwebdata();
+        }
+
     }
 
     private void initwebdata() {
@@ -144,12 +140,21 @@ public class ShowNewsActivity extends BaseHttpActivity {
             case UrlConstant.CHECK_NEWS_INFO:
                 GetNewsInfo(event, data);
                 break;
+            case UrlConstant.POST_COMMENT:
+                PostCommentinfo(event,data);
             default:
                 break;
         }
     }
 
-    @SuppressLint("NewApi")
+    private void PostCommentinfo(int event, String data) {
+        if (!isHttpRequestSuccess(event)){
+            showAlert("评论失败");
+        }else {
+            Log.d("评论成功"+data);
+        }
+    }
+
     private void GetNewsInfo(int event, String data) {
         if (!isHttpRequestSuccess(event)) {
             showAlert("获取新闻详情失败");
@@ -157,10 +162,12 @@ public class ShowNewsActivity extends BaseHttpActivity {
             NewsInfo newsInfo = GsonUtil.GsonToBean(data, NewsInfo.class);
             if (null != newsInfo) {
                 comments = commentHtml(newsInfo.getPost().getComments());
+                postid= newsInfo.getPost().getId();
                 String a = headers + getNewContent(newsInfo.getPost().getContent()) + comments + footer;
                 webView.loadDataWithBaseURL(null, a, "text/html", "utf-8", null);
-                a = null;
-
+                for (int i = 0; i < newsInfo.getPost().getComments().size(); i++) {
+                    addDanmaku(false,newsInfo.getPost().getComments().get(i).getContent());
+                }
             }
         }
     }
@@ -180,21 +187,28 @@ public class ShowNewsActivity extends BaseHttpActivity {
         intent.putExtra(TITLE, titile);
         context.startActivity(intent);
     }
+    public static void runActivity(Context context, String url) {
+        Intent intent = new Intent(context, ShowNewsActivity.class);
+        intent.putExtra(URL, url);
+        context.startActivity(intent);
+    }
 
-    @SuppressLint("NewApi")
+
     public String commentHtml(List<NewsInfo.PostBean.CommentsBean> commentsBeans) {
         String result = "";
         for (int i = 0; i < commentsBeans.size(); i++) {
             String a = "<p> <h6>" + (commentsBeans.get(i).getName()) + "</h6> <h5>" + (commentsBeans.get(i).getContent()) + "</h5><hr size=1></p>";
             result = result + a;
-            addDanmaku(false,commentsBeans.get(i).getContent());
 
         }
         return result;
     }
 
+
     private void initDanmaku() {
+        Log.d("初始化弹幕");
         mDanmakuContext = DanmakuContext.create();
+
         // 设置最大行数,从右向左滚动(有其它方向可选)
         maxLinesPair = new HashMap<>();
         maxLinesPair.put(BaseDanmaku.TYPE_SCROLL_RL, 5);
@@ -212,11 +226,13 @@ public class ShowNewsActivity extends BaseHttpActivity {
                 // 如果需要定制其他样式请扩展{@link SimpleTextCacheStuffer}|{@link SpannedCacheStuffer}
                 .setMaximumLines(maxLinesPair) //设置最大显示行数
                 .preventOverlapping(overlappingEnablePair); //设置防弹幕重叠，null为允许重叠
-
+        mDanmakuView.showFPS(false); //是否显示FPS
+        mDanmakuView.enableDanmakuDrawingCache(true);
         if (mDanmakuView != null) {
             mDanmakuView.setCallback(new DrawHandler.Callback() {
                 @Override
                 public void prepared() {
+                    Log.d("mDanmakuView.start();");
                     mDanmakuView.start();
 
                 }
@@ -244,8 +260,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
         if (mDanmakuContext == null) {
             Log.d(mDanmakuContext + "mDanmakuContext");
         }
-        mDanmakuView.showFPS(false); //是否显示FPS
-        mDanmakuView.enableDanmakuDrawingCache(true);
+
     }
 
 
@@ -305,6 +320,7 @@ public class ShowNewsActivity extends BaseHttpActivity {
 
     @Override
     protected void onDestroy() {
+
         Log.d("onDestroy");
         if (mParser != null) {
             mParser = null;
@@ -322,6 +338,8 @@ public class ShowNewsActivity extends BaseHttpActivity {
             mDanmakuView.release();
             mDanmakuView = null;
         }
+        // TODO Auto-generated method stub
+        InputMethodManagerUtils.fixInputMethodManagerLeak(this);
         super.onDestroy();
 
     }
@@ -349,7 +367,6 @@ public class ShowNewsActivity extends BaseHttpActivity {
             for (Element element : elements) {
                 element.attr("width", "100%").attr("height", "auto");
             }
-
             return doc.toString();
         } catch (Exception e) {
             return htmltext;
@@ -375,8 +392,8 @@ public class ShowNewsActivity extends BaseHttpActivity {
                 if (!TextUtils.isEmpty(danmutext.getText().toString())) {
                     Log.d(danmutext.getText().toString());
                     addDanmaku(true, danmutext.getText().toString());
+                    doPost(UrlConstant.POST_COMMENT,new Comment(postid,"超级大灰狼","123456@123.com",danmutext.getText().toString()));
                     danmutext.setText("");
-
                 } else {
                     showAlert("不能发送空的弹幕");
                 }

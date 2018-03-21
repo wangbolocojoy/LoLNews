@@ -86,4 +86,14 @@
     <string name="deled_to_collection">已从收藏中删除</string>
     <string name="down_fail">下载失败</string>
     <string name="download_completed">下载完成</string>
+    <string name="textnameminegithub">我的Github</string>
+    <string name="abloutmine">关于我们</string>
+    <string name="beauty_and_the_beast">Beauty  and  the   beast</string>
+    <string name="pg13_commendy_113min">PG13 Commendy | 113min</string>
+    <string name="rent_r29_00">RENT R29.00</string>
+    <string name="buy_r129_00">BUY R129.00</string>
+    <string name="sercher">收藏</string>
+    <string name="boom">爆炸</string>
+    <string name="tommer">西红柿</string>
+    <string name="zang">点赞</string>
 </resources>

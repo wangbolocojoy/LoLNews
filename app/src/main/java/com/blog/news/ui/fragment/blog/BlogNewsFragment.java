@@ -1,25 +1,15 @@
 package com.blog.news.ui.fragment.blog;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.blog.news.R;
 import com.blog.news.adapter.blog.FragmentBlogNewsItemListAdapter;
-import com.blog.news.adapter.shop.FragmentShopItemListAdapter;
-import com.blog.news.application.MyApplication;
 import com.blog.news.base.LazyLoadFragment;
 import com.blog.news.constant.UrlConstant;
 import com.blog.news.http.request.blog.NewsRequest;
 import com.blog.news.http.result.blog.NewsListInfo;
-import com.blog.news.http.result.blog.NewsType;
-import com.blog.news.ui.fragment.TabShopFragment;
-import com.blog.news.utils.Event;
-import com.blog.news.utils.EventCode;
 import com.blog.news.utils.helper.JsonHelper;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rhino.ui.utils.Log;
@@ -27,11 +17,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.concurrent.ThreadFactory;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  *

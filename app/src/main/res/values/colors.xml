@@ -2,17 +2,15 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff69b4</color>
     <color name="theme_color">#FF69B4</color>
     <color name="cl_snappingstepper_button_press">#1f567b</color>
     <color name="cl_snappingstepper_text">#000000</color>
-
     <color name="theme_color_light">#FF84BFE2</color>
-
     <color name="transparent">#00000000</color>
-    <color name="red">#FFFF0000</color>
-    <color name="red1">#f14b6a</color>
-    <color name="gray_e">#FFEEEEEE</color>
+    <color name="red">#FF69B4</color>
+    <color name="red1">#FF69B4</color>
+    <color name="gray_e">#eeeeee</color>
     <color name="Violet">#EE82EE</color>
     <color name="HotPink">#FF69B4</color>
     <!-- 白色无透明度 -->

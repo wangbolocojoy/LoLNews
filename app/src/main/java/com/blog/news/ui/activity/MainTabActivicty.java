@@ -3,16 +3,14 @@ package com.blog.news.ui.activity;
 import android.content.Intent;
 import android.view.KeyEvent;
 
+import com.blog.news.ui.fragment.used.TabBlogMineFragment;
 import com.rhino.ui.utils.ActivityManager;
 import com.blog.news.R;
 import com.blog.news.application.MyApplication;
 import com.blog.news.base.BaseHttpTabActivity;
 import com.blog.news.constant.StringConstant;
-import com.blog.news.ui.fragment.TabDouYInFragment;
-import com.blog.news.ui.fragment.TabHomeFragment;
-import com.blog.news.ui.fragment.TabShopFragment;
-import com.blog.news.ui.fragment.TabShopMineFragment;
-import com.blog.news.ui.fragment.TabShoppingCarFragment;
+import com.blog.news.ui.fragment.used.TabBlogNewsFragment;
+import com.blog.news.ui.fragment.notused.TabShopMineFragment;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,9 +31,9 @@ public class MainTabActivicty extends BaseHttpTabActivity {
     @Override
     protected void initTabs() {
 //        addTab(StringConstant.HOME,new int[]{R.drawable.ic_home_white_24dp},new TabHomeFragment());
-        addTab(StringConstant.CLASSIFY,new int[]{R.drawable.ic_list},new TabShopFragment());
+        addTab(StringConstant.CLASSIFY,new int[]{R.drawable.ic_list},new TabBlogNewsFragment());
+        addTab(StringConstant.MINE,new int[]{R.drawable.ic_person_pin_white_24dp},new TabBlogMineFragment());
 //        addTab(StringConstant.SHOPCAR,new int[]{R.drawable.ic_shopping_cart_white_24dp},new TabShoppingCarFragment());
-        addTab(StringConstant.MINE,new int[]{R.drawable.ic_person_pin_white_24dp},new TabShopMineFragment());
 //        addTab(StringConstant.DOUYIN,new int[]{R.drawable.ic_person_pin_white_24dp},new TabDouYInFragment());
     }
     public void setTab(int a){
